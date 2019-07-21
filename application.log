@@ -1,0 +1,23 @@
+2019-07-20 19:20:32.501 ERROR 10056 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.IllegalStateException: Failed to execute CommandLineRunner
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:803)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:784)
+	at org.springframework.boot.SpringApplication.afterRefresh(SpringApplication.java:771)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:134)
+	at com.goeuro.esurovtsev.goeurotest.Application.main(Application.java:46)
+Caused by: com.goeuro.esurovtsev.goeurotest.ExitException: org.springframework.web.client.HttpClientErrorException: 404 Not Found
+	at com.goeuro.esurovtsev.goeurotest.Application.run(Application.java:70)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:800)
+	... 5 common frames omitted
+Caused by: org.springframework.web.client.HttpClientErrorException: 404 Not Found
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:91)
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:641)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:597)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:565)
+	at org.springframework.web.client.RestTemplate.getForEntity(RestTemplate.java:298)
+	at com.goeuro.esurovtsev.goeurotest.service.GoEuroApiClient.findSuggestionsByCity(GoEuroApiClient.java:28)
+	at com.goeuro.esurovtsev.goeurotest.Application.run(Application.java:62)
+	... 6 common frames omitted
+
