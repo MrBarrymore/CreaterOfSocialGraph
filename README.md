@@ -14,3 +14,5 @@ Restrictions: Having certain time frame for doing the test some restrictions wer
 * not the whole code was test covered, only critical places where author expected something to go wrong, were covered by tests
 * no special solution for config service was provided, all necessary config data were directly injected into specific classes by Spring's @Value annotation
 * no separate Spring profiles were created to split development and production environments.
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=MrBarrymore_CreaterOfSocialGraph)
