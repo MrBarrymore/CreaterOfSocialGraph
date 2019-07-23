@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.LinkedList;
 
 @Data
 @Builder
@@ -20,6 +20,10 @@ public class SocialObject {
     private String school;
     private String university;
     private String city;
-    private List<String> friendsList;
+    private LinkedList<String> friendsList = new LinkedList<>();
+
+    public void addfriendsList(String id) {
+        friendsList.add(id);
+    }
 
 }

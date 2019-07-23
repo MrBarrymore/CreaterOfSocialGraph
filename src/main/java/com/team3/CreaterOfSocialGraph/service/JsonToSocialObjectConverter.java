@@ -16,58 +16,73 @@ public class JsonToSocialObjectConverter {
 
     private static String FILE_NAME = "E:\\Lessons Java\\Practice\\CreaterOfSocialGraph\\JsonTest.json"; // Статический заданый источник для тестов
 
-    public static void CovvertJsonToSocialObject()  throws IOException {
+    public static LinkedList<SocialObject> CovvertJsonToSocialObject() throws IOException {
 
-        //SocialObject newSocialObject = mapper.readValue(jsonString, SocialObject.class);
+        LinkedList<SocialObject> SocialObjects = new LinkedList<>();
+
+        String resultJson = parseUrl(FILE_NAME);
+
+        JSONObject listOfSocialObjects = new JSONObject(resultJson);
+
+        JSONArray arrayOfSocialObjects = (JSONArray) listOfSocialObjects.get("listOfSocialObjects");
+
+        for (int i = 0; i < arrayOfSocialObjects.length(); i++) {
+            SocialObjects.add(getSocialObject((JSONObject) arrayOfSocialObjects.get(i)));
+        }
+
+        return SocialObjects;
+    }
+
+    private static SocialObject getSocialObject(JSONObject personJsonObject ) {
 
         SocialObject newSocialObject = new SocialObject();
 
         try {
-            String resultJson = parseUrl(FILE_NAME);
-
-            System.out.println("\nПолученный JSON:\n" + resultJson);
-
-            JSONObject personJsonObject = new JSONObject(resultJson);
-
-            // получаем массив элементов для поля weather
 
             // печатаем текущую погоду в консоль
             JSONObject personData = (JSONObject) personJsonObject.get("information");
 
-            System.out.println("ID пользователя: " + personData.get("id"));
-            System.out.println("Имя: " + personData.get("first_name"));
-            System.out.println("Фамилия: " + personData.get("last_name"));
+
+            newSocialObject.setId((int) personData.get("id"));
+            newSocialObject.setSurname((String) personData.get("last_name"));
+            newSocialObject.setName((String) personData.get("first_name"));
+
 
             // Получаем название университета
             JSONArray universatyData = (JSONArray) personData.get("universities");
-                JSONObject firstUniversatyData = (JSONObject) universatyData.get(0);
-                System.out.println("Университет: " + firstUniversatyData.get("name"));
+            JSONObject firstUniversatyData = (JSONObject) universatyData.get(0);
+
+            newSocialObject.setUniversity((String) firstUniversatyData.get("name"));
+
 
             JSONArray schoolData = (JSONArray) personData.get("schools");
             JSONObject firstSchoolData = (JSONObject) schoolData.get(0);
+            newSocialObject.setSchool((String) firstSchoolData.get("name"));
+
+            JSONObject fiends = (JSONObject) personJsonObject.get("friends");
+            LinkedList<Integer> friendsArray = new LinkedList<>();
+
+            // Для уточнения информации
+            System.out.println("ID пользователя: " + personData.get("id"));
+            System.out.println("Имя: " + personData.get("first_name"));
+            System.out.println("Фамилия: " + personData.get("last_name"));
             System.out.println("Школа: " + firstSchoolData.get("name"));
-
-                JSONObject fiends = (JSONObject) personJsonObject.get("friends");
-
+            System.out.println("Университет: " + firstUniversatyData.get("name"));
             System.out.println("Количество друзей: " + fiends.get("count"));
 
             JSONArray fiendsArray = (JSONArray) fiends.get("items");
-
-            LinkedList<Integer> friendsArray = new LinkedList<>();
-
-            for (int i = 0; i < (int)fiends.get("count"); i++) {
+            for (int i = 0; i < (int) fiends.get("count"); i++) {
                 friendsArray.add((int) fiendsArray.get(i));
                 System.out.println(fiendsArray.get(i));
+                newSocialObject.addfriendsList(String.valueOf(fiendsArray.get(i)));
             }
         } catch (NullPointerException ex) {
             ex.printStackTrace();
         }
 
-
-//
-//        return newSocialObject;
-
+        return newSocialObject;
     }
+
 
     public static String parseUrl(String url) {
         if (url == null) {
@@ -76,7 +91,7 @@ public class JsonToSocialObjectConverter {
         StringBuilder stringBuilder = new StringBuilder();
         // открываем соедиение к указанному URL
         // помощью конструкции try-with-resources
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(url))) {
 
             String inputLine;
             // построчно считываем результат в объект StringBuilder

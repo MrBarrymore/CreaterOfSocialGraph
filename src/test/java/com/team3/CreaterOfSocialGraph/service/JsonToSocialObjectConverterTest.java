@@ -6,8 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.io.IOException;
-
 @RunWith(MockitoJUnitRunner.class)
 public class JsonToSocialObjectConverterTest {
 
@@ -22,8 +20,9 @@ public class JsonToSocialObjectConverterTest {
         sut = new JsonToSocialObjectConverter();
     }
 
+
     @Test
-    public void covvertJsonToSocialObject() throws IOException {
+    public void covvertJsonToSocialObject() throws Exception{
         JsonToSocialObjectConverter.CovvertJsonToSocialObject();
     }
 }
