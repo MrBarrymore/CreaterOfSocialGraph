@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.LinkedList;
 
 @Data
@@ -14,7 +17,10 @@ import java.util.LinkedList;
 @AllArgsConstructor
 public class SocialObject {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int inId;
+    private int id;
     private String surname;
     private String name;
     private String school;
@@ -22,7 +28,7 @@ public class SocialObject {
     private String city;
     private LinkedList<String> friendsList = new LinkedList<>();
 
-    public void addfriendsList(String id) {
+    public void addFriendsList(String id) {
         friendsList.add(id);
     }
 
