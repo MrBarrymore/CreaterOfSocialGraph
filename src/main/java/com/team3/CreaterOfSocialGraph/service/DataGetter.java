@@ -6,8 +6,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import static com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter.CovvertJsonToSocialObjects;
 import static com.team3.CreaterOfSocialGraph.service.helper.IOHelper.parseUrl;
+import static com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter.CovvertJsonToSocialObjects;
 
 public class DataGetter {
 
@@ -15,9 +15,9 @@ public class DataGetter {
 
     public static LinkedList<SocialObject> getDataFromServer() throws IOException {
 
-
         String resultJson = parseUrl(FILE_NAME);
 
+       // ArrayList<JsonArray>  SocialObjectsList = GetDataFromVK();  // Нужно добавить критерии запроса
 
         JSONObject listOfSocialObjectsJSON = new JSONObject(resultJson);
 

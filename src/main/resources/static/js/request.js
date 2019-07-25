@@ -19,10 +19,8 @@ Vue.component('request-form', {
     template:
         '<div>' +
         '<input type="text" placeholder="Введите наименование атрибута" v-model="text" />' +
-        '<input type="button" value="request" @click="Запросить" />' +
+        '<input type="button" value="Запросить" @click="request" />' +
         '</div>',
-
-
 });
 
 

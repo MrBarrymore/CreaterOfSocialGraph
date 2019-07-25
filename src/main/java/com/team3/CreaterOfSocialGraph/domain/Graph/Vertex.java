@@ -5,13 +5,18 @@ import lombok.Data;
 
 import javax.persistence.Id;
 
+
 @Data
 public class Vertex {
 
     @Id
-    private int inId;
+  //  @JsonIgnore
+    private int id;
+  //  @JsonProperty("name")
     private String name;
+   // @JsonProperty("pageLink")
     private String pageLink;
+   // @JsonProperty("objectGroup")
     private String groupOfObject;
 
    // private LinkedList<String> friendsList;
@@ -20,21 +25,21 @@ public class Vertex {
 
     public Vertex(String name)
     {
-        this.inId = 0;
+        this.id = 0;
         this.name = name;
         isVisited = false;
     }
 
-    public Vertex(String name, int inId)
+    public Vertex(String name, int id)
     {
-        this.inId = inId;
+        this.id = id;
         this.name = name;
         isVisited = false;
     }
 
-    public Vertex(int inId, String name, String pageLink)
+    public Vertex(int id, String name, String pageLink)
     {
-        this.inId = inId;
+        this.id = id;
         this.name = name;
         isVisited = false;
     }
