@@ -4,7 +4,6 @@ package com.team3.CreaterOfSocialGraph.domain.Graph;
 import lombok.Data;
 
 import javax.persistence.Id;
-import java.util.LinkedList;
 
 @Data
 public class Vertex {
@@ -12,7 +11,10 @@ public class Vertex {
     @Id
     private int inId;
     private String name;
-    private LinkedList<String> friendsList;
+    private String pageLink;
+    private String groupOfObject;
+
+   // private LinkedList<String> friendsList;
 
     public boolean isVisited;
 
@@ -24,6 +26,13 @@ public class Vertex {
     }
 
     public Vertex(String name, int inId)
+    {
+        this.inId = inId;
+        this.name = name;
+        isVisited = false;
+    }
+
+    public Vertex(int inId, String name, String pageLink)
     {
         this.inId = inId;
         this.name = name;

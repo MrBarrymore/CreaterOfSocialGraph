@@ -67,4 +67,7 @@ public class SocialGraph {
     public List<Vertex> getAdjVertices(String label) {
         return adjVertices.get(new Vertex(label));
     }
+
+
+
 }

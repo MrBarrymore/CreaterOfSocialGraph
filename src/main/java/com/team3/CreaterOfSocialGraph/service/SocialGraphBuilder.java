@@ -3,6 +3,8 @@ package com.team3.CreaterOfSocialGraph.service;
 
 import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
+import com.team3.CreaterOfSocialGraph.service.helper.SocialObjectToJsonConverter;
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -30,7 +32,10 @@ public class SocialGraphBuilder {
         }
 
 
+
+
         // Здесь формируем новый Json файл и кидаем в скрипт на D3
+        JSONObject newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
 
         // Далее ищем когорты в полученном графе
 

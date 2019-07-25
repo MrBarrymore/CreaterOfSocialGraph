@@ -1,4 +1,4 @@
-package com.team3.CreaterOfSocialGraph.service;
+package com.team3.CreaterOfSocialGraph.service.helper;
 
 
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
@@ -12,7 +12,8 @@ import java.util.LinkedList;
 @Component
 public class JsonToSocialObjectConverter {
 
-    public static LinkedList<SocialObject> CovvertJsonToSocialObjects(JSONObject listOfSocialObjects) throws IOException {
+    public static LinkedList<SocialObject> CovvertJsonToSocialObjects(JSONObject listOfSocialObjects)
+            throws IOException {
 
         LinkedList<SocialObject> SocialObjects = new LinkedList<>();
 

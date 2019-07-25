@@ -1,5 +1,6 @@
 package com.team3.CreaterOfSocialGraph.service;
 
+import com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;

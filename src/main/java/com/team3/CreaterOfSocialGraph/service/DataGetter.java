@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import static com.team3.CreaterOfSocialGraph.service.JsonToSocialObjectConverter.CovvertJsonToSocialObjects;
+import static com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter.CovvertJsonToSocialObjects;
 import static com.team3.CreaterOfSocialGraph.service.helper.IOHelper.parseUrl;
 
 public class DataGetter {
@@ -17,6 +17,8 @@ public class DataGetter {
 
 
         String resultJson = parseUrl(FILE_NAME);
+
+
         JSONObject listOfSocialObjectsJSON = new JSONObject(resultJson);
 
        LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
