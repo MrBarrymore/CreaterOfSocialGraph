@@ -1,6 +1,8 @@
 package com.team3.CreaterOfSocialGraph.domain.Graph;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import lombok.Data;
 
 import javax.persistence.Id;
@@ -10,14 +12,18 @@ import javax.persistence.Id;
 public class Vertex {
 
     @Id
-  //  @JsonIgnore
+    @JsonProperty("id")
     private int id;
-  //  @JsonProperty("name")
-    private String name;
-   // @JsonProperty("pageLink")
-    private String pageLink;
-   // @JsonProperty("objectGroup")
+    @JsonProperty("name")
+    private String last_name;
+    @JsonProperty("name")
+    private String first_name;
+    @JsonProperty("photoLink")
+    private String photoLink;
+    @JsonProperty("objectGroup")
     private String groupOfObject;
+    @JsonProperty("pageLink")
+    private String pageLink;
 
    // private LinkedList<String> friendsList;
 
@@ -26,21 +32,16 @@ public class Vertex {
     public Vertex(String name)
     {
         this.id = 0;
-        this.name = name;
+        this.first_name = name;
         isVisited = false;
     }
 
-    public Vertex(String name, int id)
+    public Vertex(SocialObject socialObject)
     {
-        this.id = id;
-        this.name = name;
-        isVisited = false;
-    }
-
-    public Vertex(int id, String name, String pageLink)
-    {
-        this.id = id;
-        this.name = name;
+        this.id = socialObject.getId();
+        this.last_name = socialObject.getLastname();
+        this.first_name = socialObject.getName();
+        this.photoLink = socialObject.getPhotoLink();
         isVisited = false;
     }
 

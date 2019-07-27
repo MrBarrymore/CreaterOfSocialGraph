@@ -1,6 +1,7 @@
 package com.team3.CreaterOfSocialGraph.domain.Graph;
 
 
+import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ import java.util.Map;
 @Builder
 //@NoArgsConstructor
 public class SocialGraph {
+
 
     private Map<Vertex, List<Vertex>> adjVertices;
 
@@ -40,6 +42,10 @@ public class SocialGraph {
         adjVertices.putIfAbsent(new Vertex(label), new ArrayList<>());
     }
 
+    public void addVertex(SocialObject socialObject) {
+        adjVertices.putIfAbsent(new Vertex(socialObject), new ArrayList<>());
+    }
+
     public void removeVertex(String label) {
         Vertex v = new Vertex(label);
         adjVertices.values().stream().forEach(e -> e.remove(v));
@@ -52,6 +58,14 @@ public class SocialGraph {
         adjVertices.get(v1).add(v2);
         adjVertices.get(v2).add(v1);
     }
+
+    public void addEdge(SocialObject label1, String label2) {
+        Vertex v1 = new Vertex(label1);
+        Vertex v2 = new Vertex(label2);
+        adjVertices.get(v1).add(v2);
+        adjVertices.get(v2).add(v1);
+    }
+
 
     public void removeEdge(String label1, String label2) {
         Vertex v1 = new Vertex(label1);

@@ -1,7 +1,6 @@
 package com.team3.CreaterOfSocialGraph.service.vkdatagetter;
 
 
-
 import com.vk.api.sdk.client.VkApiClient;
 
 

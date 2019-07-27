@@ -86,7 +86,7 @@
 		</dependency>
 
 		<!--  Jackson Library -->
-<!--		<dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 			<version>2.2.2</version>
@@ -100,9 +100,9 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.2.2</version>
-		</dependency>-->
+		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.vk.api/sdk -->
+		 <!-- https://mvnrepository.com/artifact/com.vk.api/sdk-->
 		<dependency>
 			<groupId>com.vk.api</groupId>
 			<artifactId>sdk</artifactId>
@@ -110,7 +110,8 @@
 		</dependency>
 
 		<!-- https://www.slf4j.org/codes.html#multiple_bindings-->
-		<dependency>
+
+<!--		<dependency>
 			<groupId> org.apache.cassandra</groupId>
 			<artifactId>cassandra-all</artifactId>
 			<version>0.8.1</version>
@@ -126,7 +127,7 @@
 				</exclusion>
 			</exclusions>
 
-		</dependency>
+		</dependency>-->
 
 	</dependencies>
 
@@ -136,6 +137,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+
 		</plugins>
 	</build>
 

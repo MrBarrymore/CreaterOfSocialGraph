@@ -35,7 +35,7 @@ public class JsonToSocialObjectConverter {
 
             // Получаем id, имя и фамилию
             newSocialObject.setId((int) personData.get("id"));
-            newSocialObject.setSurname((String) personData.get("last_name"));
+            newSocialObject.setLastname((String) personData.get("last_name"));
             newSocialObject.setName((String) personData.get("first_name"));
 
             // Получаем название университета

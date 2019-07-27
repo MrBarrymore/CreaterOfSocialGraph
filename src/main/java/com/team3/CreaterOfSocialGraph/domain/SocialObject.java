@@ -21,11 +21,12 @@ public class SocialObject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int inId;
     private int id;
-    private String surname;
+    private String lastname;
     private String name;
     private String school;
     private String university;
     private String city;
+    private String photoLink;
     private LinkedList<String> friendsList = new LinkedList<>();
 
     public void addFriendsList(String id) {
