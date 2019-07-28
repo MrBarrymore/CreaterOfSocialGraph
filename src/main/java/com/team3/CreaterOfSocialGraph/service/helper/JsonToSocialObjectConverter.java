@@ -7,20 +7,24 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 @Component
 public class JsonToSocialObjectConverter {
 
-    public static LinkedList<SocialObject> CovvertJsonToSocialObjects(JSONObject listOfSocialObjects)
+    public static Map<Integer, SocialObject> CovvertJsonToSocialObjects(JSONObject listOfSocialObjects)
             throws IOException {
 
-        LinkedList<SocialObject> SocialObjects = new LinkedList<>();
+        Map<Integer, SocialObject> SocialObjects = new HashMap<>();
 
         JSONArray arrayOfSocialObjects = (JSONArray) listOfSocialObjects.get("listOfSocialObjects");
 
         for (int i = 0; i < arrayOfSocialObjects.length(); i++) {
-            SocialObjects.add(getSocialObject((JSONObject) arrayOfSocialObjects.get(i)));
+            SocialObject bufsocialObject = getSocialObject((JSONObject) arrayOfSocialObjects.get(i));
+            bufsocialObject.setInId(i);
+            SocialObjects.put(bufsocialObject.getInId(), bufsocialObject);
         }
 
         return SocialObjects;
@@ -48,6 +52,7 @@ public class JsonToSocialObjectConverter {
             newSocialObject.setSchool((String) firstSchoolData.get("name"));
 
             JSONObject fiends = (JSONObject) personJsonObject.get("friends");
+
 
             // Для уточнения информации
 //            System.out.println("ID пользователя: " + personData.get("id"));

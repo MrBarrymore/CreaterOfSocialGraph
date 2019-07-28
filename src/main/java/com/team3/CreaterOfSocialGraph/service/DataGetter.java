@@ -4,7 +4,7 @@ import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.Map;
 
 import static com.team3.CreaterOfSocialGraph.service.helper.IOHelper.parseUrl;
 import static com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter.CovvertJsonToSocialObjects;
@@ -13,7 +13,7 @@ public class DataGetter {
 
     private static String FILE_NAME = "E:\\Lessons Java\\Practice\\CreaterOfSocialGraph\\JsonTest.json"; // Статический заданый источник для тестов
 
-    public static LinkedList<SocialObject> getDataFromServer() throws IOException {
+    public static Map<Integer, SocialObject> getDataFromServer() throws IOException {
 
         String resultJson = parseUrl(FILE_NAME);
 
@@ -21,7 +21,7 @@ public class DataGetter {
 
         JSONObject listOfSocialObjectsJSON = new JSONObject(resultJson);
 
-       LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
+        Map<Integer, SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
 
        return listOfSocialObjects;
     }

@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import static com.team3.CreaterOfSocialGraph.service.DataGetter.getDataFromServer;
 
@@ -20,25 +21,19 @@ public class SocialGraphBuilder {
 
     public static void graphBuilder() throws IOException {
 
-        LinkedList<SocialObject> listOfSocialObjects = getDataFromServer();
+        Map<Integer, SocialObject> listOfSocialObjects = getDataFromServer();
 
         SocialGraph socialGraph = new SocialGraph();
 
-        for (SocialObject socialObject : listOfSocialObjects) {
-            socialGraph.addVertex(socialObject);
+        for (int i = 0; i < listOfSocialObjects.size(); i++) {
+            socialGraph.addVertex(listOfSocialObjects.get(i));
         }
 
-/*        for (SocialObject socialObject : listOfSocialObjects) {
-            for (String friend : socialObject.getFriendsList()) {
-                socialGraph.addEdge(Integer.toString(socialObject.getId()), friend);
-            }
-        }*/
+     // System.out.println(socialGraph.getAdjVertices());
 
-        System.out.println(socialGraph.getAdjVertices());
-
-      for (SocialObject socialObject : listOfSocialObjects) {
-            for (String friend : socialObject.getFriendsList()) {
-                socialGraph.addEdge(Integer.toString(socialObject.getId()), friend);
+        for (int i = 0; i < listOfSocialObjects.size(); i++) {
+            for (String friend : listOfSocialObjects.get(i).getFriendsList()) {
+                socialGraph.addEdge(listOfSocialObjects.get(i).getId(), friend);
             }
         }
 
@@ -46,7 +41,9 @@ public class SocialGraphBuilder {
         JSONObject newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
 
 
+        toJSON(socialGraph);
 
+        listOfSocialObjects.size();
       //  socialGraph.getAdjVertices();
 
         // Далее ищем когорты в полученном графе
@@ -54,13 +51,31 @@ public class SocialGraphBuilder {
         // Строим и выводим на экран новый граф с учетом когорт
     }
 
-    private final static String baseFile = "user.json";
+    private final static String baseFile = "src\\main\\resources\\static\\js\\graph.json";
 
-    public static void toJSON(Vertex vertex) throws IOException {
+    public static void toJSON(SocialGraph socialGraph) throws IOException {
 
+        Map<Vertex, List<Vertex>> vartexs = socialGraph.getAdjVertices();
+
+
+        String json = "{  "  ;
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(baseFile), vertex);
-        System.out.println("json created!");
+
+        for (int i = 0; i < vartexs.size(); i++) {
+
+            json +=  "\" nodes: \": [";
+         //   for (vartexs.get(i) )
+            //"{ \"name\": \"" + vartexs.get(i) + "\", \"children\": [ ";
+        }
+
+        System.out.println(json);
+
+
+        mapper.writeValue(new File(baseFile), vartexs);
+
+
+     //   System.out.println("json created!");
+        System.out.println();
 
     }
 
