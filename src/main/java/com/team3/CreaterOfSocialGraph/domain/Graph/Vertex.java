@@ -5,30 +5,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import lombok.Data;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Data
 public class Vertex {
 
     //@Id
     @JsonProperty("id")
-    private int id;
 
-   // public boolean isVisited;
+    private Map<Integer, SocialObject> socialObjectDTO;
 
-    public Vertex(Integer id)
+    private SocialObject socialObject;
+
+    // public boolean isVisited;
+
+    public Vertex()
     {
-        this.id = id;
+        socialObjectDTO = new HashMap<>();
     }
 
-    public Vertex(SocialObject socialObject)
+    public Vertex(Integer id, SocialObject socialObject)
     {
-        this.id = socialObject.getId();
+        this.socialObjectDTO.putIfAbsent(id, socialObject);
     }
 
-    @Override
-    public String toString() {
-        return "Vertex{" +
-                "id=" + id +
-                '}';
-    }
+
 }

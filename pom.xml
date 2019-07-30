@@ -36,24 +36,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+<!--		<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-<!--		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>-->
-
-		<!-- MySQL Database -->
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
-
 
 		<!-- lombok project -->
 		<dependency>
@@ -78,12 +64,20 @@
 		</dependency>
 
 
-		<!-- https://mvnrepository.com/artifact/org.webjars/vue -->
+
+		<!-- https://mvnrepository.com/artifact/com.vk.api/sdk-->
 		<dependency>
+			<groupId>com.vk.api</groupId>
+			<artifactId>sdk</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.webjars/vue -->
+<!--		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>vue</artifactId>
 			<version>2.6.10</version>
-		</dependency>
+		</dependency>-->
 
 		<!--  Jackson Library -->
 <!--		<dependency>
@@ -103,20 +97,17 @@
 		</dependency>-->
 
 
+		<!--		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>-->
+
 <!--		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.2.2</version>
 		</dependency>-->
 
-
-
-		 <!-- https://mvnrepository.com/artifact/com.vk.api/sdk-->
-		<dependency>
-			<groupId>com.vk.api</groupId>
-			<artifactId>sdk</artifactId>
-			<version>1.0.2</version>
-		</dependency>
 
 		<!-- https://www.slf4j.org/codes.html#multiple_bindings-->
 
@@ -146,7 +137,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 
 		</plugins>
 	</build>

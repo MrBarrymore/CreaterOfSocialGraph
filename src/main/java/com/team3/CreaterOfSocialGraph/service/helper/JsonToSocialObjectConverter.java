@@ -38,7 +38,7 @@ public class JsonToSocialObjectConverter {
             JSONObject personData = (JSONObject) personJsonObject.get("information");
 
             // Получаем id, имя и фамилию
-            newSocialObject.setId((int) personData.get("id"));
+            newSocialObject.setId( Integer.toString((Integer) personData.get("id"))  );
             newSocialObject.setLastname((String) personData.get("last_name"));
             newSocialObject.setName((String) personData.get("first_name"));
 

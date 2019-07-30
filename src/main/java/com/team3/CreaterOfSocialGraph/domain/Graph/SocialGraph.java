@@ -2,10 +2,10 @@ package com.team3.CreaterOfSocialGraph.domain.Graph;
 
 
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,63 +18,57 @@ import java.util.Map;
 //@NoArgsConstructor
 public class SocialGraph {
 
-    private Map<Vertex, List<Vertex>> adjVertices;
+    private Map<String, SocialObject> adjVertices;
 
     public SocialGraph() {
         this.adjVertices = new HashMap<>();
     }
 
-    public SocialGraph(Map<Vertex, List<Vertex>> adjVertices) {
+    public SocialGraph(Map<String, SocialObject> adjVertices) {
         this.adjVertices = adjVertices;
     }
 
-    public Map<Vertex, List<Vertex>> getAdjVertices() {
+    public Map<String, SocialObject> getAdjVertices() {
         return adjVertices;
     }
 
-    public void setAdjVertices(Map<Vertex, List<Vertex>> adjVertices) {
+    public void setAdjVertices(Map<String, SocialObject> adjVertices) {
         this.adjVertices = adjVertices;
     }
 
 
-    public void addVertex(SocialObject socialObject) {
-        adjVertices.putIfAbsent(new Vertex(socialObject), new ArrayList<>());
-    }
-
-    public void removeVertex(SocialObject socialObject) {
-        Vertex v = new Vertex(socialObject);
-        adjVertices.values().stream().forEach(e -> e.remove(v));
-        adjVertices.remove(new Vertex(socialObject));
-    }
-
-    public void addEdge(Integer label1, String label2) {
-        Vertex v1 = new Vertex(label1);
-        Vertex v2 = new Vertex(Integer.valueOf(label2));
-        adjVertices.get(v1).add(v2);
-        adjVertices.get(v2).add(v1);
-    }
-
-    public void addEdge(SocialObject label1, SocialObject label2) {
-        Vertex v1 = new Vertex(label1);
-        Vertex v2 = new Vertex(label2);
-        adjVertices.get(v1).add(v2);
-        adjVertices.get(v2).add(v1);
+    public void addVertex(String id, SocialObject socialObject)
+    {
+        this.adjVertices.putIfAbsent(id, socialObject);
     }
 
 
-    public void removeEdge(SocialObject label1, SocialObject label2) {
-        Vertex v1 = new Vertex(label1);
-        Vertex v2 = new Vertex(label2);
-        List<Vertex> eV1 = adjVertices.get(v1);
-        List<Vertex> eV2 = adjVertices.get(v2);
+    public void removeVertex(String id) {
+
+        for (int i = 0 ; i < adjVertices.get(id).getFriendsList().size(); i++) {
+            String idBuf = adjVertices.get(id).getFriendsList().get(i);
+            adjVertices.get(id).getFriendsList().remove(idBuf);
+        }
+
+        adjVertices.remove(id);
+    }
+
+    public void addEdge(String id1, String id2) {
+        adjVertices.get(id1).getFriendsList().add(id2);
+        adjVertices.get(id2).getFriendsList().add(id1);
+    }
+
+    public void removeEdge(Integer id1, Integer id2) {
+        List<String> eV1 = adjVertices.get(id1).getFriendsList();
+        List<String> eV2 = adjVertices.get(id2).getFriendsList();
         if (eV1 != null)
-            eV1.remove(v2);
+            eV1.remove(id1);
         if (eV2 != null)
-            eV2.remove(v1);
+            eV2.remove(id2);
     }
 
-    public List<Vertex> getAdjVertices(SocialObject label) {
-        return adjVertices.get(new Vertex(label));
+    public SocialObject getAdjVertices(String id) {
+        return adjVertices.get(id);
     }
 
 

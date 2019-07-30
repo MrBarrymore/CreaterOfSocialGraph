@@ -17,8 +17,6 @@ public class DataGetter {
 
         String resultJson = parseUrl(FILE_NAME);
 
-       // ArrayList<JsonArray>  SocialObjectsList = GetDataFromVK();  // Нужно добавить критерии запроса
-
         JSONObject listOfSocialObjectsJSON = new JSONObject(resultJson);
 
         Map<Integer, SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
