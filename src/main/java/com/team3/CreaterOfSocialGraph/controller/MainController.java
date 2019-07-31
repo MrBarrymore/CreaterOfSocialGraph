@@ -22,6 +22,7 @@ public class MainController {
 
     @PostMapping("/")
     public String getSocialGraph() throws IOException {
+
         String message = "";
 
         String SocialGraph = SocialGraphBuilder.graphBuilder();

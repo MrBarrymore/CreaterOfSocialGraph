@@ -26,19 +26,16 @@ public class SocialGraphBuilder {
             socialGraph.addVertex(listOfSocialObjects.get(i).getId(), listOfSocialObjects.get(i));
         }
 
-
         // Здесь формируем новый Json файл и кидаем в скрипт на D3
         String newJsonObjectsList = SocialObjectToJsonConverter.getJson(listOfSocialObjects);
-
-        //JSONObject newJsonObjectsList = ConvertSocialGraphToJson(socialGraph);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File(baseFile), newJsonObjectsList);
 
 
-
-
         // Далее ищем когорты в полученном графе
+
+
 
         // Строим и выводим на экран новый граф с учетом когорт
 

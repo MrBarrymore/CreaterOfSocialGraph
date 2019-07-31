@@ -6,7 +6,6 @@ public class RequestMessage {
 /*    @Id
     @GeneratedValue(strategy= GenerationType.AUTO)*/
     private Integer id;
-
     private String text;
     private String attributeName;
 
