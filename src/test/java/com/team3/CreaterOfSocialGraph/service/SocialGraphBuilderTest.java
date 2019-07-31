@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
-
 public class SocialGraphBuilderTest {
 
     @Before
@@ -14,7 +12,7 @@ public class SocialGraphBuilderTest {
     }
 
     @Test
-    public void graphBuilder() throws IOException {
+    public void graphBuilder() throws IOException, InterruptedException {
         SocialGraphBuilder.graphBuilder();
     }
 }

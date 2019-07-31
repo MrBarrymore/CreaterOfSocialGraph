@@ -28,6 +28,6 @@ public class JsonToSocialObjectConverterTest {
     public void covvertJsonToSocialObject() throws Exception{
         String resultJson = parseUrl(FILE_NAME);
         JSONObject listOfSocialObjects = new JSONObject(resultJson);
-        JsonToSocialObjectConverter.CovvertJsonToSocialObjects(listOfSocialObjects);
+       // JsonToSocialObjectConverter.CovvertJsonToSocialObjects(listOfSocialObjects);
     }
 }

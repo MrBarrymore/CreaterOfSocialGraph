@@ -13,7 +13,7 @@ public class DataGetterTest {
     }
 
     @Test
-    public void getDataFromServer() throws IOException {
+    public void getDataFromServer() throws IOException, InterruptedException {
         DataGetter.getDataFromServer();
     }
 }

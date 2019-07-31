@@ -58,5 +58,29 @@ public class SocialObjectToJsonConverter {
         return newjson;
     }
 
+    /*    public static String toJSON(SocialGraph socialGraph) throws IOException {
+
+        Map<Vertex, List<Vertex>> vertexs = socialGraph.getAdjVertices();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+
+        Map<Integer, List<Integer>> newmap = vertexs.entrySet()
+                .stream()
+                .collect(Collectors.toMap(o -> o.getKey().getId(),
+                        o2 -> o2.getValue().stream()
+                                .map(Vertex::getId)
+                                .collect(Collectors.toList())));
+
+
+
+        String jsonstring = mapper.writeValueAsString(newmap);
+        System.out.println(jsonstring);
+
+        mapper.writeValue(new File(baseFile), vertexs);
+
+        return jsonstring;
+    }*/
+
 
 }

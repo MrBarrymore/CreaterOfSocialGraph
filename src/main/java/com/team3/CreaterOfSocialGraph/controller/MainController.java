@@ -2,26 +2,25 @@ package com.team3.CreaterOfSocialGraph.controller;
 
 
 import com.team3.CreaterOfSocialGraph.service.SocialGraphBuilder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@RestController
+@Controller
 //@RequiredArgsConstructor
-@RequestMapping("request")
+//@RequestMapping("request")
 public class MainController {
 
     @GetMapping("/")
     public String getPage() {
 
-        return "main";
+        return "index";
     }
 
     @PostMapping("/")
-    public String getSocialGraph() throws IOException {
+    public String getSocialGraph() throws IOException, InterruptedException {
 
         String message = "";
 
