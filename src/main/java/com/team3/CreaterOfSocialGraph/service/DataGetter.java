@@ -3,13 +3,12 @@ package com.team3.CreaterOfSocialGraph.service;
 //import com.google.gson.JsonArray;
 
 //import com.google.gson.JsonArray;
-import com.google.gson.JsonArray;
+
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
-import com.team3.CreaterOfSocialGraph.service.vkdatagetter.VkAPIConnector;
 import org.json.JSONArray;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.LinkedList;
 
 import static com.team3.CreaterOfSocialGraph.service.helper.IOHelper.parseUrl;
 import static com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter.CovvertJsonToSocialObjects;
@@ -21,24 +20,25 @@ public class DataGetter {
     private static String FILE_NAME = "E:\\Lessons Java\\Practice\\CreaterOfSocialGraph\\JsonTest.json"; // Статический заданый источник для тестов
 
 
-    public static Map<Integer, SocialObject> getDataFromServer() throws IOException, InterruptedException {
+    public static LinkedList<SocialObject> getDataFromServer() throws IOException, InterruptedException {
 
         String resultJson = parseUrl(FILE_NAME);
 
 
-       // JSONObject listOfSocialObjectsJSON = new JSONObject(resultJson);
-        //   Map<Integer, SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
+         JSONArray listOfSocialObjectsJSON = new JSONArray(resultJson);
 
-        JsonArray bufarray = VkAPIConnector.getVkObjects();
+        LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
 
-        String arr = bufarray.toString();
+      //  JsonArray bufarray = VkAPIConnector.getVkObjects();
 
-        JSONArray listOfSocialObjectsJSON =  new JSONArray(arr);
+       // String arr = bufarray.toString();
+
+       // JSONArray listOfSocialObjectsJSON =  new JSONArray(arr);
 
 
-        Map<Integer, SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
+       // Map<Integer, SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
 
-       return listOfSocialObjects;
+        return listOfSocialObjects;
     }
 
 

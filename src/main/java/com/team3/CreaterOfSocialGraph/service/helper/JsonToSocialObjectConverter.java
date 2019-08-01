@@ -7,24 +7,25 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 @Component
 public class JsonToSocialObjectConverter {
 
-    public static Map<Integer, SocialObject> CovvertJsonToSocialObjects(JSONArray listOfSocialObjects)
+    public static LinkedList CovvertJsonToSocialObjects(JSONArray listOfSocialObjects)
             throws IOException {
 
-        Map<Integer, SocialObject> SocialObjects = new HashMap<>();
+      //  Map<Integer, SocialObject> SocialObjects = new HashMap<>();
+
+        LinkedList SocialObjects = new LinkedList();
 
         JSONArray arrayOfSocialObjects = listOfSocialObjects;
 
         for (int i = 0; i < arrayOfSocialObjects.length(); i++) {
             SocialObject bufsocialObject = getSocialObject((JSONObject) arrayOfSocialObjects.get(i));
-            bufsocialObject.setInId(i);
-            SocialObjects.put(bufsocialObject.getInId(), bufsocialObject);
+                bufsocialObject.setInId(i);
+           // SocialObjects.put(bufsocialObject.getInId(), bufsocialObject);
+            SocialObjects.add(bufsocialObject);
         }
 
         return SocialObjects;
@@ -43,14 +44,14 @@ public class JsonToSocialObjectConverter {
 
             // Получаем название университета
             JSONObject cityData = (JSONObject) personJsonObject.get("city");
-                if (cityData != null) newSocialObject.setCity((String) cityData.get("title"));
+              if (cityData != null) newSocialObject.setCity((String) cityData.get("title"));
 
             // Получаем название университета
-            JSONArray universityData = (JSONArray) personJsonObject.get("universities");
-            if (universityData != null) {
+/*            JSONArray universityData = (JSONArray) personJsonObject.get("universities");
+            if (universityData.get(0) != null) {
                 JSONObject firstUniversityData = (JSONObject) universityData.get(0);
                 newSocialObject.setUniversity((String) firstUniversityData.get("name"));
-            }
+            }*/
 
      //       JSONArray schoolData = (JSONArray) personJsonObject.get("schools");
        //     JSONObject firstSchoolData = (JSONObject) schoolData.get(0);

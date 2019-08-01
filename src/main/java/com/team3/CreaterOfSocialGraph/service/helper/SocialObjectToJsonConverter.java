@@ -26,7 +26,7 @@ public class SocialObjectToJsonConverter {
         return JASON;
     }
 
-    public static String getJson(Map<Integer, SocialObject> listOfSocialObjects) {
+    public static String getJson(Map<String, SocialObject> listOfSocialObjects) {
 
      //   String baseFile = "src\\main\\resources\\static\\js\\graph.json";
 

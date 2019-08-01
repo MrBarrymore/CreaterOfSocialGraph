@@ -13,6 +13,6 @@ public class SocialGraphBuilderTest {
 
     @Test
     public void graphBuilder() throws IOException, InterruptedException {
-        SocialGraphBuilder.graphBuilder();
+      //  SocialGraphBuilder.graphBuilder();
     }
 }

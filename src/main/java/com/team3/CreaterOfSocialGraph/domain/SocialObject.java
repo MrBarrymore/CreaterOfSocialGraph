@@ -25,6 +25,15 @@ public class SocialObject {
     private String photoLink;
     private String pageLink;
     private LinkedList<String> friendsList = new LinkedList<>();
+    private String socialObjectGroup = "1";
+
+    public String getSocialObjectGroup() {
+        return socialObjectGroup;
+    }
+
+    public void setSocialObjectGroup(String socialObjectGroup) {
+        this.socialObjectGroup = socialObjectGroup;
+    }
 
     public void addFriendsList(String id) {
         friendsList.add(id);

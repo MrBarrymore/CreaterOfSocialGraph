@@ -9,16 +9,22 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 import static com.team3.CreaterOfSocialGraph.service.DataGetter.getDataFromServer;
 
 @Component
 public class SocialGraphBuilder {
 
-    public static String graphBuilder() throws IOException, InterruptedException {
+    public static List<SocialObject> getListOfSocialObjects() throws IOException, InterruptedException {
 
-        Map<Integer, SocialObject> listOfSocialObjects = getDataFromServer();
+        LinkedList<SocialObject> listOfSocialObjects = getDataFromServer();
+
+        return listOfSocialObjects;
+    }
+
+    public static String graphBuilder(LinkedList<SocialObject> listOfSocialObjects) throws IOException, InterruptedException {
 
         SocialGraph socialGraph = new SocialGraph();
 
@@ -27,7 +33,7 @@ public class SocialGraphBuilder {
         }
 
         // Здесь формируем новый Json файл и кидаем в скрипт на D3
-        String newJsonObjectsList = SocialObjectToJsonConverter.getJson(listOfSocialObjects);
+        String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File(baseFile), newJsonObjectsList);
@@ -38,8 +44,6 @@ public class SocialGraphBuilder {
 
 
         // Строим и выводим на экран новый граф с учетом когорт
-
-
 
         return newJsonObjectsList;
     }
