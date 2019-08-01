@@ -28,8 +28,6 @@ public class SocialObjectToJsonConverter {
 
     public static String getJson(Map<String, SocialObject> listOfSocialObjects) {
 
-     //   String baseFile = "src\\main\\resources\\static\\js\\graph.json";
-
         String newjson = "{ \"nodes\": [ \"";
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
 

@@ -21,25 +21,24 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
-        return "index";
+        return "greeting";
     }
 
-    @GetMapping("/main")
+    @GetMapping("/request")
     public ModelAndView main(@RequestParam(required = false, defaultValue = "") String filter, Model model ) throws IOException, InterruptedException {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mainPage");
 
-   //    List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects();
-
-  //      model.addAttribute("listOfSocialObjects", listOfSocialObjects);
+       List<SocialObject> listOfSocialObjects = null;
 
         return modelAndView;
     }
 
     @PostMapping("/request")
-    public ModelAndView getSocialGraph(@RequestParam String text,
-                                 @RequestParam String tag, Model model) throws IOException, InterruptedException {
+    public ModelAndView getSocialGraph(
+            @RequestParam String text,
+            @RequestParam String tag, Model model) throws IOException, InterruptedException {
 
 
         ModelAndView modelAndView = new ModelAndView();

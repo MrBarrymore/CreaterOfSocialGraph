@@ -15,8 +15,6 @@ public class JsonToSocialObjectConverter {
     public static LinkedList CovvertJsonToSocialObjects(JSONArray listOfSocialObjects)
             throws IOException {
 
-      //  Map<Integer, SocialObject> SocialObjects = new HashMap<>();
-
         LinkedList SocialObjects = new LinkedList();
 
         JSONArray arrayOfSocialObjects = listOfSocialObjects;
@@ -24,7 +22,6 @@ public class JsonToSocialObjectConverter {
         for (int i = 0; i < arrayOfSocialObjects.length(); i++) {
             SocialObject bufsocialObject = getSocialObject((JSONObject) arrayOfSocialObjects.get(i));
                 bufsocialObject.setInId(i);
-           // SocialObjects.put(bufsocialObject.getInId(), bufsocialObject);
             SocialObjects.add(bufsocialObject);
         }
 
@@ -44,18 +41,25 @@ public class JsonToSocialObjectConverter {
 
             // Получаем название университета
             JSONObject cityData = (JSONObject) personJsonObject.get("city");
-              if (cityData != null) newSocialObject.setCity((String) cityData.get("title"));
+              if (cityData != null)
+                  newSocialObject.setCity((String) cityData.get("title"));
 
             // Получаем название университета
-/*            JSONArray universityData = (JSONArray) personJsonObject.get("universities");
-            if (universityData.get(0) != null) {
+           JSONArray universityData = (JSONArray) personJsonObject.get("universities");
+            if (universityData.length() > 0) {
                 JSONObject firstUniversityData = (JSONObject) universityData.get(0);
                 newSocialObject.setUniversity((String) firstUniversityData.get("name"));
-            }*/
+            }
 
-     //       JSONArray schoolData = (JSONArray) personJsonObject.get("schools");
-       //     JSONObject firstSchoolData = (JSONObject) schoolData.get(0);
-       //     newSocialObject.setSchool((String) firstSchoolData.get("name"));
+           JSONArray schoolData = (JSONArray) personJsonObject.get("schools");
+            if (schoolData.length() > 0) {
+                JSONObject firstSchoolData = (JSONObject) schoolData.get(0);
+                newSocialObject.setSchool((String) firstSchoolData.get("name"));
+            }
+
+            newSocialObject.setPhotoLink((String)personJsonObject.get("photo_50"));
+
+            newSocialObject.setSocialObjectGroup("1");
 
             LinkedList<Integer> friendsArray = new LinkedList<>();
 

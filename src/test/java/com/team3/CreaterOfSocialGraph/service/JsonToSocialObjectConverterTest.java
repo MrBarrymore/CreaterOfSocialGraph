@@ -1,7 +1,7 @@
 package com.team3.CreaterOfSocialGraph.service;
 
 import com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter;
-import org.json.JSONObject;
+import org.json.JSONArray;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ public class JsonToSocialObjectConverterTest {
     @Test
     public void covvertJsonToSocialObject() throws Exception{
         String resultJson = parseUrl(FILE_NAME);
-        JSONObject listOfSocialObjects = new JSONObject(resultJson);
-       // JsonToSocialObjectConverter.CovvertJsonToSocialObjects(listOfSocialObjects);
+        JSONArray listOfSocialObjectsJSON = new JSONArray(resultJson);
+        JsonToSocialObjectConverter.CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
     }
 }

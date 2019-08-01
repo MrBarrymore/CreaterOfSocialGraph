@@ -22,21 +22,16 @@ public class DataGetter {
 
     public static LinkedList<SocialObject> getDataFromServer() throws IOException, InterruptedException {
 
+        // Работа через парсер
+        //  JsonArray bufarray = VkAPIConnector.getVkObjects();
+        // String arr = bufarray.toString();
+        // JSONArray listOfSocialObjectsJSON =  new JSONArray(arr);
+        // Map<Integer, SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
+
+        // Берем данные из тестового файла
         String resultJson = parseUrl(FILE_NAME);
-
-
-         JSONArray listOfSocialObjectsJSON = new JSONArray(resultJson);
-
+        JSONArray listOfSocialObjectsJSON = new JSONArray(resultJson);
         LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
-
-      //  JsonArray bufarray = VkAPIConnector.getVkObjects();
-
-       // String arr = bufarray.toString();
-
-       // JSONArray listOfSocialObjectsJSON =  new JSONArray(arr);
-
-
-       // Map<Integer, SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
 
         return listOfSocialObjects;
     }

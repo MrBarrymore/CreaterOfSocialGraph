@@ -24,7 +24,7 @@ public class SocialGraphBuilder {
         return listOfSocialObjects;
     }
 
-    public static String graphBuilder(LinkedList<SocialObject> listOfSocialObjects) throws IOException, InterruptedException {
+    public static String graphBuilder(List<SocialObject> listOfSocialObjects) throws IOException, InterruptedException {
 
         SocialGraph socialGraph = new SocialGraph();
 

@@ -17,14 +17,13 @@ line.link {
     stroke-width: 1.5px;
 }*/
 
-.node {
-    stroke: #fff;
-    stroke-width: 1.5px;
+.link {
+    stroke: #ccc;
 }
 
-.link {
-    fill: none;
-    stroke: #bbb;
+.node text {
+    pointer-events: none;
+    font: 10px sans-serif;
 }
 
 label {
