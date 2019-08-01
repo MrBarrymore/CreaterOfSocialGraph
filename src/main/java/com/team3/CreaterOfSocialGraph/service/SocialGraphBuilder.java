@@ -36,11 +36,8 @@ public class SocialGraphBuilder {
         String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
         //String newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
 
-
         // Далее ищем когорты в полученном графе
 
-
-        // Строим и выводим на экран новый граф с учетом когорт
 
         return socialGraph;
     }
@@ -49,7 +46,6 @@ public class SocialGraphBuilder {
     public static String JsonGraphBuilder(SocialGraph socialGraph) throws IOException {
 
         String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
-        //String newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File(baseFile), newJsonObjectsList);

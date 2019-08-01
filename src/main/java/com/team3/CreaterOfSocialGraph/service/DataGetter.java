@@ -4,14 +4,13 @@ package com.team3.CreaterOfSocialGraph.service;
 
 //import com.google.gson.JsonArray;
 
-import com.google.gson.JsonArray;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
-import com.team3.CreaterOfSocialGraph.service.vkdatagetter.VkAPIConnector;
 import org.json.JSONArray;
 
 import java.io.IOException;
 import java.util.LinkedList;
 
+import static com.team3.CreaterOfSocialGraph.service.helper.IOHelper.parseUrl;
 import static com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter.CovvertJsonToSocialObjects;
 
 
@@ -24,15 +23,15 @@ public class DataGetter {
     public static LinkedList<SocialObject> getDataFromServer() throws IOException, InterruptedException {
 
         // Работа через парсер
-          JsonArray bufarray = VkAPIConnector.getVkObjects();
+/*          JsonArray bufarray = VkAPIConnector.getVkObjects();
          String arr = bufarray.toString();
          JSONArray listOfSocialObjectsJSON =  new JSONArray(arr);
-         LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
+         LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);*/
 
         // Берем данные из тестового файла
-/*        String resultJson = parseUrl(FILE_NAME);
+       String resultJson = parseUrl(FILE_NAME);
         JSONArray listOfSocialObjectsJSON = new JSONArray(resultJson);
-        LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);*/
+        LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
 
         return listOfSocialObjects;
     }
