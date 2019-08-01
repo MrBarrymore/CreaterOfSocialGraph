@@ -26,7 +26,7 @@ public class SocialObjectToJsonConverter {
         return JASON;
     }
 
-    public static String getJson(Map<String, SocialObject> listOfSocialObjects) {
+    public static String getJson(Map<Integer, SocialObject> listOfSocialObjects) {
 
         String newjson = "{ \"nodes\": [ \"";
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
@@ -34,10 +34,10 @@ public class SocialObjectToJsonConverter {
             newjson += "{ \"id\": \"" + listOfSocialObjects.get(i).getId() + "\", " +
                     " \"group:\" 1}";
 
-            if (i != listOfSocialObjects.size() - 1) newjson += ", \n";
-            else newjson += "\n";
+            if (i != listOfSocialObjects.size() - 1) newjson += ", ";
+
         }
-        newjson += "], \n \"links\" : [";
+        newjson += "], \"links\" : [";
 
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
             for (int j = 0; j < listOfSocialObjects.get(i).getFriendsList().size(); j++) {
@@ -46,11 +46,11 @@ public class SocialObjectToJsonConverter {
                         listOfSocialObjects.get(i).getFriendsList().get(j) + "\"";
                 newjson += "\"value\": 1 }";
 
-                if (i != listOfSocialObjects.size() - 1 || j != listOfSocialObjects.get(i).getFriendsList().size() - 1 ) newjson += ", \n";
-                else newjson += "\n";
+                if (i != listOfSocialObjects.size() - 1 || j != listOfSocialObjects.get(i).getFriendsList().size() - 1 ) newjson += ",";
+
             }
         }
-        newjson += "] \n }";
+        newjson += "] }";
 
         System.out.println(newjson);
         return newjson;

@@ -29,11 +29,12 @@ public class SocialGraphBuilder {
         SocialGraph socialGraph = new SocialGraph();
 
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
-            socialGraph.addVertex(listOfSocialObjects.get(i).getId(), listOfSocialObjects.get(i));
+            socialGraph.addVertex(listOfSocialObjects.get(i).getInId(), listOfSocialObjects.get(i));
         }
 
         // Здесь формируем новый Json файл и кидаем в скрипт на D3
         String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
+        //String newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File(baseFile), newJsonObjectsList);

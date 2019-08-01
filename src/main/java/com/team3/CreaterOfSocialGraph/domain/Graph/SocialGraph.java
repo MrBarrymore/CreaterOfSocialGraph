@@ -18,32 +18,32 @@ import java.util.Map;
 //@NoArgsConstructor
 public class SocialGraph {
 
-    private Map<String, SocialObject> adjVertices;
+    private Map<Integer, SocialObject> adjVertices;
 
     public SocialGraph() {
         this.adjVertices = new HashMap<>();
     }
 
-    public SocialGraph(Map<String, SocialObject> adjVertices) {
+    public SocialGraph(Map<Integer, SocialObject> adjVertices) {
         this.adjVertices = adjVertices;
     }
 
-    public Map<String, SocialObject> getAdjVertices() {
+    public Map<Integer, SocialObject> getAdjVertices() {
         return adjVertices;
     }
 
-    public void setAdjVertices(Map<String, SocialObject> adjVertices) {
+    public void setAdjVertices(Map<Integer, SocialObject> adjVertices) {
         this.adjVertices = adjVertices;
     }
 
 
-    public void addVertex(String id, SocialObject socialObject)
+    public void addVertex(Integer id, SocialObject socialObject)
     {
         this.adjVertices.putIfAbsent(id, socialObject);
     }
 
 
-    public void removeVertex(String id) {
+    public void removeVertex(Integer id) {
 
         for (int i = 0 ; i < adjVertices.get(id).getFriendsList().size(); i++) {
             String idBuf = adjVertices.get(id).getFriendsList().get(i);
@@ -53,9 +53,9 @@ public class SocialGraph {
         adjVertices.remove(id);
     }
 
-    public void addEdge(String id1, String id2) {
-        adjVertices.get(id1).getFriendsList().add(id2);
-        adjVertices.get(id2).getFriendsList().add(id1);
+    public void addEdge(Integer id1, Integer id2) {
+        adjVertices.get(id1).getFriendsList().add(adjVertices.get(id2).getId());
+        adjVertices.get(id2).getFriendsList().add(adjVertices.get(id1).getId());
     }
 
     public void removeEdge(Integer id1, Integer id2) {
