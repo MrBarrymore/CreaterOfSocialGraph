@@ -24,7 +24,7 @@ public class SocialGraphBuilder {
         return listOfSocialObjects;
     }
 
-    public static String graphBuilder(List<SocialObject> listOfSocialObjects) throws IOException, InterruptedException {
+    public static SocialGraph graphBuilder(List<SocialObject> listOfSocialObjects) throws IOException, InterruptedException {
 
         SocialGraph socialGraph = new SocialGraph();
 
@@ -36,18 +36,27 @@ public class SocialGraphBuilder {
         String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
         //String newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(baseFile), newJsonObjectsList);
-
 
         // Далее ищем когорты в полученном графе
 
 
-
         // Строим и выводим на экран новый граф с учетом когорт
+
+        return socialGraph;
+    }
+
+
+    public static String JsonGraphBuilder(SocialGraph socialGraph) throws IOException {
+
+        String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
+        //String newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(baseFile), newJsonObjectsList);
 
         return newJsonObjectsList;
     }
+
 
    private final static String baseFile = "src\\main\\resources\\static\\js\\graph.json";
 

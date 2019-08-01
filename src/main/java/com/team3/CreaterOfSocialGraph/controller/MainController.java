@@ -44,10 +44,8 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("request");
 
-
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects();
         model.addAttribute("listOfSocialObjects", listOfSocialObjects);
-
 
         return modelAndView;
     }
