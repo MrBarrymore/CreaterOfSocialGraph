@@ -13,7 +13,7 @@ import static com.team3.CreaterOfSocialGraph.service.helper.IOHelper.parseUrl;
 @RunWith(MockitoJUnitRunner.class)
 public class JsonToSocialObjectConverterTest {
 
-    private static String FILE_NAME = "E:\\Lessons Java\\Practice\\CreaterOfSocialGraph\\JsonTest.json"; // Статический заданый источник для тестов
+    private static String FILE_NAME = "JsonTest.json"; // Статический заданый источник для тестов
 
     @InjectMocks
     JsonToSocialObjectConverter sut;
