@@ -28,11 +28,11 @@ public class SocialObjectToJsonConverter {
 
     public static String getJson(Map<Integer, SocialObject> listOfSocialObjects) {
 
-        String newjson = "{ \"nodes\": [ \"";
+        String newjson = "{ \"nodes\": [ ";
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
 
-            newjson += "{ \"id\": \"" + listOfSocialObjects.get(i).getId() + "\", " +
-                    " \"group:\" 1}";
+            newjson += "{ \"name\": \"" + listOfSocialObjects.get(i).getId() + "\", " +
+                    " \"group\": 1}";
 
             if (i != listOfSocialObjects.size() - 1) newjson += ", ";
 
@@ -43,7 +43,7 @@ public class SocialObjectToJsonConverter {
             for (int j = 0; j < listOfSocialObjects.get(i).getFriendsList().size(); j++) {
 
                 newjson += "{ \"source\": \"" + listOfSocialObjects.get(i).getId() + "\", \"target\": \"" +
-                        listOfSocialObjects.get(i).getFriendsList().get(j) + "\"";
+                        listOfSocialObjects.get(i).getFriendsList().get(j) + "\", ";
                 newjson += "\"value\": 1 }";
 
                 if (i != listOfSocialObjects.size() - 1 || j != listOfSocialObjects.get(i).getFriendsList().size() - 1 ) newjson += ",";
@@ -52,7 +52,11 @@ public class SocialObjectToJsonConverter {
         }
         newjson += "] }";
 
+        newjson = newjson.replaceAll("\"", "\\\"");
+
+
         System.out.println(newjson);
+
         return newjson;
     }
 

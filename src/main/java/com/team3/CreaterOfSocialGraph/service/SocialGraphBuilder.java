@@ -1,13 +1,12 @@
 package com.team3.CreaterOfSocialGraph.service;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import com.team3.CreaterOfSocialGraph.service.helper.SocialObjectToJsonConverter;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,12 +31,7 @@ public class SocialGraphBuilder {
             socialGraph.addVertex(listOfSocialObjects.get(i).getInId(), listOfSocialObjects.get(i));
         }
 
-        // Здесь формируем новый Json файл и кидаем в скрипт на D3
-        String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
-        //String newJsonObjectsList = SocialObjectToJsonConverter.ConvertSocialGraphToJson(socialGraph);
-
         // Далее ищем когорты в полученном графе
-
 
         return socialGraph;
     }
@@ -47,11 +41,25 @@ public class SocialGraphBuilder {
 
         String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(baseFile), newJsonObjectsList);
+
+       // ObjectMapper mapper = new ObjectMapper();
+       // mapper.writeValue(new File(baseFile), newJsonObjectsList);
+
+
+        try (FileWriter writer = new FileWriter(baseFile, false)){
+            writer.write(newJsonObjectsList);
+            writer.flush();
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+
 
         return newJsonObjectsList;
     }
+
+
 
 
    private final static String baseFile = "src\\main\\resources\\static\\js\\graph.json";

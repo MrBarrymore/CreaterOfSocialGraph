@@ -11,6 +11,6 @@ public class VkAPIConnectorTest {
 
     @Test
     public void getVkObjects() throws InterruptedException {
-      //  VkAPIConnector.getVkObjects();
+        VkAPIConnector.getVkObjects();
     }
 }

@@ -19,4 +19,10 @@ public class SocialGraphBuilderTest {
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects();
         SocialGraphBuilder.graphBuilder(listOfSocialObjects);
     }
+
+    @Test
+    public void JsonGraphBuilder() throws IOException, InterruptedException {
+        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects();
+        SocialGraphBuilder.JsonGraphBuilder(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
+    }
 }
