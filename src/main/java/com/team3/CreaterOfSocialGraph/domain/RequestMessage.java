@@ -1,19 +1,18 @@
 package com.team3.CreaterOfSocialGraph.domain;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class RequestMessage {
 
-/*    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)*/
-    private Integer id;
-    private String text;
+    private String name;
     private String attributeName;
 
     public RequestMessage() {
     }
 
-    public RequestMessage(String text, String attributeName) {
-        this.text = text;
+    public RequestMessage(String attributeName, String name) {
+        this.name = name;
         this.attributeName = attributeName;
     }
 }

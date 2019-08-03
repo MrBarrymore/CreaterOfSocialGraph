@@ -4,11 +4,11 @@
         <form method="post" action="/request">
             <div>
                 <label for="inputAddress">Название атрибута</label>
-                <input type="text" name="text" class="form-control" placeholder="Барнаул" />
+                <input type="text" name="name" class="form-control" placeholder="Барнаул" />
             </div>
             <div class="form-group">
                 <label for="inputState">Наименование атрибута</label>
-                <select name="tag" id="inputState" class="form-control">
+                <select name="attributeName" id="inputState" class="form-control">
                     <option selected>Выберете атрибут...</option>
                     <option>Город</option>
                     <option>Университет</option>

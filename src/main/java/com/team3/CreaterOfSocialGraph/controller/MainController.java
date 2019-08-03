@@ -1,6 +1,7 @@
 package com.team3.CreaterOfSocialGraph.controller;
 
 
+import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import com.team3.CreaterOfSocialGraph.service.SocialGraphBuilder;
 import org.springframework.stereotype.Controller;
@@ -37,15 +38,19 @@ public class MainController {
 
     @PostMapping("/request")
     public ModelAndView getSocialGraph(
-            @RequestParam String text,
-            @RequestParam String tag, Model model) throws IOException, InterruptedException {
+            @RequestParam String name,
+            @RequestParam String attributeName, Model model) throws IOException, InterruptedException {
 
+        RequestMessage requestMessage = new RequestMessage(attributeName, name);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("request");
 
-        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects();
+        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
+
+
         model.addAttribute("listOfSocialObjects", listOfSocialObjects);
+
 
         return modelAndView;
     }

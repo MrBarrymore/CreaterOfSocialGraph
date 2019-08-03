@@ -2,6 +2,7 @@ package com.team3.CreaterOfSocialGraph.service;
 
 
 import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
+import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import com.team3.CreaterOfSocialGraph.service.helper.SocialObjectToJsonConverter;
 import org.springframework.stereotype.Component;
@@ -16,9 +17,9 @@ import static com.team3.CreaterOfSocialGraph.service.DataGetter.getDataFromServe
 @Component
 public class SocialGraphBuilder {
 
-    public static List<SocialObject> getListOfSocialObjects() throws IOException, InterruptedException {
+    public static List<SocialObject> getListOfSocialObjects(RequestMessage requestMessage) throws IOException, InterruptedException {
 
-        LinkedList<SocialObject> listOfSocialObjects = getDataFromServer();
+        LinkedList<SocialObject> listOfSocialObjects = getDataFromServer(requestMessage);
 
         return listOfSocialObjects;
     }

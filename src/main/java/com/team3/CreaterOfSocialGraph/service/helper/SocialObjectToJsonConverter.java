@@ -6,9 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class SocialObjectToJsonConverter {
 
 
@@ -31,7 +33,7 @@ public class SocialObjectToJsonConverter {
         String newjson = "{ \"nodes\": [ ";
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
 
-            newjson += "{ \"name\": \"" + listOfSocialObjects.get(i).getId() + "\", " +
+            newjson += "{ \"id\": \"" + listOfSocialObjects.get(i).getId() + "\", " +
                     " \"group\": 1}";
 
             if (i != listOfSocialObjects.size() - 1) newjson += ", ";
@@ -44,7 +46,7 @@ public class SocialObjectToJsonConverter {
 
                 newjson += "{ \"source\": \"" + listOfSocialObjects.get(i).getId() + "\", \"target\": \"" +
                         listOfSocialObjects.get(i).getFriendsList().get(j) + "\", ";
-                newjson += "\"value\": 1 }";
+                newjson += "\"value\": 5 }";
 
                 if (i != listOfSocialObjects.size() - 1 || j != listOfSocialObjects.get(i).getFriendsList().size() - 1 ) newjson += ",";
 

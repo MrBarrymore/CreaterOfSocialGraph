@@ -3,6 +3,7 @@ package com.team3.CreaterOfSocialGraph.service.vkdatagetter;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.vk.api.sdk.client.ClientResponse;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
@@ -148,7 +149,7 @@ public class VkAPIConnector {
         return users_arr;
     }
 
-    public static JsonArray getVkObjects() throws InterruptedException {
+    public static JsonArray getVkObjects(RequestMessage requestMessage) throws InterruptedException {
         ////////////////////////////////////////////////
 
         JsonArray result = new JsonArray();

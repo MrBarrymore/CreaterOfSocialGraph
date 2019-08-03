@@ -21,17 +21,26 @@
 
     <div>
 
+
+        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>
+
         <style>
-            .link {
-                stroke: #ccc;
+            .node {
+                stroke: #fff;
+                stroke-width: 1.5px;
             }
-            .node text {
-                pointer-events: none;
-                font: 10px sans-serif;
+
+            .link {
+                fill: none;
+                stroke: #bbb;
             }
         </style>
 
-        <script src="//d3js.org/d3.v3.min.js"></script>
+        <#--<script src="//d3js.org/d3.v3.min.js"></script>-->
+        <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+
+        <svg width="960" height="600"></svg>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
         <script src="/js/GraphBuilder.js"></script>
 
     </div>
