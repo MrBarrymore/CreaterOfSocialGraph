@@ -6,24 +6,21 @@
 
     <div> <h3>Список объектов социального графа</h3> </div>
 
-    <div>
-        <#list listOfSocialObjects as socialObject>
-            <div>
-                <b>${socialObject.id}</b>
-               <span>${socialObject.lastname}</span>
-                <span> ${socialObject.name}</span>
-                </span>${socialObject.socialObjectGroup}</span>
-            </div>
-             <#else>
-             No socialObject
-         </#list>
+    <div id="listDiv">
+<#--        <#list listOfSocialObjects as socialObject>-->
+<#--            <div>-->
+<#--                <b>${socialObject.id}</b>-->
+<#--               <span>${socialObject.lastname}</span>-->
+<#--                <span> ${socialObject.name}</span>-->
+<#--                </span>${socialObject.socialObjectGroup}</span>-->
+<#--            </div>-->
+<#--             <#else>-->
+<#--             No socialObject-->
+<#--         </#list>-->
     </div>
 
-    <div>
-
-
+    <div id="graph">
         <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>
-
         <style>
             .node {
                 stroke: #fff;
@@ -38,7 +35,6 @@
 
         <#--<script src="//d3js.org/d3.v3.min.js"></script>-->
         <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-
         <svg width="960" height="600"></svg>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script src="/js/GraphBuilder.js"></script>

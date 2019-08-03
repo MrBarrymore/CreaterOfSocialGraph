@@ -1,4 +1,3 @@
-
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -10,86 +9,24 @@ var simulation = d3.forceSimulation()
     .force("charge", d3.forceManyBody())
     .force("center", d3.forceCenter(width / 2, height / 2));
 
-d3.json("graph1.json", function(error, graph) {
-    if (error) throw error;
+// d3.json("graph1.json", function(error, graph) {
+// d3.json('/request', {
+//     method:"POST",
+//     body: JSON.stringify({
+//         name: 'Hello',
+//         attributeName: '1111'
+//     }),
+//     headers: {
+//         "Content-type": "application/json; charset=UTF-8"
+//     }
+// }).then(function (graph) {
+//     console.log(graph);
+// });
 
-    var nodes = graph.nodes,
-        nodeById = d3.map(nodes, function(d) { return d.id; }),
-        links = graph.links,
-        bilinks = [];
+//     // if (error) throw error;
+//
 
-   links.forEach(function(link) {
-        var s = link.source = nodeById.get(link.source),
-            t = link.target = nodeById.get(link.target),
-            i = {}; // intermediate node
-        nodes.push(i);
-        links.push({source: s, target: i}, {source: i, target: t});
-        bilinks.push([s, i, t]);
-    });
-
-/*    var link = svg.selectAll(".link")
-        .data(bilinks)
-        .enter().append("path")
-        .attr("class", "link");*/
-
-    var link = svg.selectAll(".link")
-        .data(json.links)
-        .enter().append("line")
-        .attr("class", "link");
-
-/*    var node = svg.selectAll(".node")
-        .data(nodes.filter(function(d) { return d.id; }))
-        .enter().append("circle")
-        .attr("class", "node")
-        .attr("r", 5)
-        .attr("fill", function(d) { return color(d.group); })
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));*/
-
-       var node = svg.selectAll(".node")
-            .data(nodes.filter(function(d) { return d.id; }))
-            .enter().append("image")
-           .attr("xlink:href", "https://github.com/favicon.ico")
-           .attr("x", -8)
-           .attr("y", -8)
-           .attr("width", 16)
-           .attr("height", 16)
-           .attr("fill", function(d) { return color(d.group); })
-           .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended));
-
-    node.append("text")
-        .attr("dx", 12)
-        .attr("dy", ".35em")
-        .text(function(d) { return d.id });
-
-    node.append("title")
-        .text(function(d) { return d.id; });
-
-    node.append("image")
-        .attr("xlink:href", "https://github.com/favicon.ico")
-        .attr("x", -8)
-        .attr("y", -8)
-        .attr("width", 16)
-        .attr("height", 16);
-
-    simulation
-        .nodes(nodes)
-        .on("tick", ticked);
-
-    simulation.force("link")
-        .links(links);
-
-/*    function ticked() {
-        link.attr("d", positionLink);
-        node.attr("transform", positionNode);
-    }*/
-
-});
+// });
 
 function positionLink(d) {
     return "M" + d[0].x + "," + d[0].y
@@ -224,3 +161,99 @@ function drawNode(d) {
     context.arc(d.x, d.y, 3, 0, 2 * Math.PI);
 }*/
 
+function testtest() {
+    const name = document.getElementById('nameInput').value;
+    const attributeName = document.getElementById('attributeNameInput').value;
+    console.log(name, attributeName);
+    $.post("/getSocialGraphAndList", {name, attributeName}).done(
+        response => {
+
+            const list = response.listOfSocialObjects;
+            const listDiv = $("#listDiv");
+            list.forEach(socialObject => {
+                listDiv.append(`<div><b>${socialObject.id}</b><span>${socialObject.lastname}</span><span> ${socialObject.name}</span><span>${socialObject.socialObjectGroup}</span></div>`);
+            });
+
+            const graph = JSON.parse(response.jsonSocialGraph);
+            console.log(graph);
+            var nodes = graph.nodes,
+                nodeById = d3.map(nodes, function (d) {
+                    return d.id;
+                }),
+                links = graph.links,
+                bilinks = [];
+
+            links.forEach(function (link) {
+                var s = link.source = nodeById.get(link.source),
+                    t = link.target = nodeById.get(link.target),
+                    i = {}; // intermediate node
+                nodes.push(i);
+                links.push({source: s, target: i}, {source: i, target: t});
+                bilinks.push([s, i, t]);
+            });
+
+            var link = svg.selectAll(".link")
+                .data(bilinks)
+                .enter().append("path")
+                .attr("class", "link");
+
+            /*    var link = svg.selectAll(".link")
+                    .data(json.links)
+                    .enter().append("line")
+                    .attr("class", "link");*/
+
+            var node = svg.selectAll(".node")
+                .data(nodes.filter(function (d) {
+                    return d.id;
+                }))
+                .enter().append("circle")
+                .attr("class", "node")
+                .attr("r", 5)
+                .attr("fill", function (d) {
+                    return color(d.group);
+                })
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended));
+
+            /*       var node = svg.selectAll(".node")
+                        .data(nodes.filter(function(d) { return d.id; }))
+                        .enter().append("image")
+                       .attr("xlink:href", "https://github.com/favicon.ico")
+                       .attr("x", -8)
+                       .attr("y", -8)
+                       .attr("width", 16)
+                       .attr("height", 16)
+                       .attr("fill", function(d) { return color(d.group); })
+                       .call(d3.drag()
+                            .on("start", dragstarted)
+                            .on("drag", dragged)
+                            .on("end", dragended));*/
+
+            node.append("text")
+                .attr("dx", 12)
+                .attr("dy", ".35em")
+                .text(function (d) {
+                    return d.id
+                });
+
+            node.append("title")
+                .text(function (d) {
+                    return d.id;
+                });
+
+            simulation
+                .nodes(nodes)
+                .on("tick", ticked);
+
+            simulation.force("link")
+                .links(links);
+
+            function ticked() {
+                link.attr("d", positionLink);
+                node.attr("transform", positionNode);
+            }
+        }
+    );
+}

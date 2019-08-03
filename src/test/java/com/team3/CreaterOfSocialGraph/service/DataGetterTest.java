@@ -1,5 +1,6 @@
 package com.team3.CreaterOfSocialGraph.service;
 
+import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +15,7 @@ public class DataGetterTest {
 
     @Test
     public void getDataFromServer() throws IOException, InterruptedException {
-        DataGetter.getDataFromServer();
+        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ");
+        DataGetter.getDataFromServer(requestMessage);
     }
 }
