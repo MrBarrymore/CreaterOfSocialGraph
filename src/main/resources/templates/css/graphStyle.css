@@ -17,6 +17,15 @@ line.link {
     stroke-width: 1.5px;
 }*/
 
+.main {
+    background: cornsilk;
+    margin-left: 60px;
+}
+
+.container {
+    margin-left: 60rem;
+}
+
 .link {
     stroke: #ccc;
 }

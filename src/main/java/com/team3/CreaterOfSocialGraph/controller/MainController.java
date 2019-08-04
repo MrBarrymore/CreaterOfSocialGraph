@@ -89,9 +89,6 @@ public class MainController {
 
         OutPackage outPackage = new OutPackage(newJson,listOfSocialObjects);
 
-
-//        model.addAttribute("listOfSocialObjects", listOfSocialObjects);
-
         return outPackage;
     }
 

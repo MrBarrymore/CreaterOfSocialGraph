@@ -25,7 +25,7 @@ public class DataGetter {
     public static LinkedList<SocialObject> getDataFromServer(RequestMessage requestMessage) throws IOException, InterruptedException {
 
         // Работа через парсер
-/*       JsonArray bufarray = VkAPIConnector.getVkObjects(requestMessage);
+/*         JsonArray bufarray = VkAPIConnector.getVkObjects(requestMessage);
          String arr = bufarray.toString();
          JSONArray listOfSocialObjectsJSON =  new JSONArray(arr);
          LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON);*/
