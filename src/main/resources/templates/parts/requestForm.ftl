@@ -19,4 +19,5 @@
             <button type="submit" class="btn btn-primary">Поиск</button>
         </form>
     </div>
+
 </#macro>

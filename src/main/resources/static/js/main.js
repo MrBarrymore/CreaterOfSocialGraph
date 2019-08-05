@@ -1,4 +1,0 @@
-
-
-@import
-"static/sass/main"

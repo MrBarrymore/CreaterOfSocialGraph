@@ -92,6 +92,10 @@ public class MainController {
         return outPackage;
     }
 
+    @GetMapping("/aboutApplication")
+    public String aboutApplication(Map<String, Object> model) {
+        return "aboutPage";
+    }
 
 
 }
