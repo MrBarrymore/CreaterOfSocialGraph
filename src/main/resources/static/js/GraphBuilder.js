@@ -15,7 +15,7 @@ function testtest() {
 
             // Рисуем социальный граф
             const graph = JSON.parse(response.jsonSocialGraph);
-      //      console.log(graph);
+            console.log(graph);
 
 
             var nodes = graph.nodes,
@@ -44,20 +44,20 @@ function testtest() {
                     .enter().append("line")
                     .attr("class", "link");*/
 
-            var node = svg.selectAll(".node")
-                .data(nodes.filter(function (d) {
-                    return d.id;
-                }))
-                .enter().append("circle")
-                .attr("class", "node")
-                .attr("r", 5)
-                .attr("fill", function (d) {
-                    return color(d.group);
-                })
-                .call(d3.drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended));
+            // var node = svg.selectAll(".node")
+            //     .data(nodes.filter(function (d) {
+            //         return d.id;
+            //     }))
+            //     .enter().append("circle")
+            //     .attr("class", "node")
+            //     .attr("r", 5)
+            //     .attr("fill", function (d) {
+            //         return color(d.group);
+            //     })
+            //     .call(d3.drag()
+            //         .on("start", dragstarted)
+            //         .on("drag", dragged)
+            //         .on("end", dragended));
 
 
             node.append("text")

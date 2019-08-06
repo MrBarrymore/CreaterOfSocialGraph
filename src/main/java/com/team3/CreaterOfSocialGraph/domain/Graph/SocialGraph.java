@@ -18,49 +18,49 @@ import java.util.Map;
 //@NoArgsConstructor
 public class SocialGraph {
 
-    private Map<Integer, SocialObject> adjVertices;
+    private Map<Long, SocialObject> adjVertices;
 
     public SocialGraph() {
         this.adjVertices = new HashMap<>();
     }
 
-    public SocialGraph(Map<Integer, SocialObject> adjVertices) {
+    public SocialGraph(Map<Long, SocialObject> adjVertices) {
         this.adjVertices = adjVertices;
     }
 
-    public Map<Integer, SocialObject> getAdjVertices() {
+    public Map<Long, SocialObject> getAdjVertices() {
         return adjVertices;
     }
 
-    public void setAdjVertices(Map<Integer, SocialObject> adjVertices) {
+    public void setAdjVertices(Map<Long, SocialObject> adjVertices) {
         this.adjVertices = adjVertices;
     }
 
 
-    public void addVertex(Integer id, SocialObject socialObject)
+    public void addVertex(Long id, SocialObject socialObject)
     {
         this.adjVertices.putIfAbsent(id, socialObject);
     }
 
 
-    public void removeVertex(Integer id) {
+    public void removeVertex(Long id) {
 
         for (int i = 0 ; i < adjVertices.get(id).getFriendsList().size(); i++) {
-            String idBuf = adjVertices.get(id).getFriendsList().get(i);
+            Long idBuf = adjVertices.get(id).getFriendsList().get(i);
             adjVertices.get(id).getFriendsList().remove(idBuf);
         }
 
         adjVertices.remove(id);
     }
 
-    public void addEdge(Integer id1, Integer id2) {
-        adjVertices.get(id1).getFriendsList().add(adjVertices.get(id2).getId());
-        adjVertices.get(id2).getFriendsList().add(adjVertices.get(id1).getId());
+    public void addEdge(Long id1, Long id2) {
+//        adjVertices.get(id1).getFriendsList().add(adjVertices.get(id2).getId());
+//        adjVertices.get(id2).getFriendsList().add(adjVertices.get(id1).getId());
     }
 
-    public void removeEdge(Integer id1, Integer id2) {
-        List<String> eV1 = adjVertices.get(id1).getFriendsList();
-        List<String> eV2 = adjVertices.get(id2).getFriendsList();
+    public void removeEdge(Long id1, Long id2) {
+        List<Long> eV1 = adjVertices.get(id1).getFriendsList();
+        List<Long> eV2 = adjVertices.get(id2).getFriendsList();
         if (eV1 != null)
             eV1.remove(id1);
         if (eV2 != null)

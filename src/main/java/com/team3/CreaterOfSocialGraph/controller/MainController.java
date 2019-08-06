@@ -89,8 +89,10 @@ public class MainController {
 
         SocialGraph socialGraph = cohortCounter.getSocialObjectListWithRating(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
 
- //       String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraph);
-        String newJson = " ";
+        listOfSocialObjects = cohortCounter.getList(socialGraph);
+
+        String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraph);
+   //     String newJson = " ";
 
         OutPackage outPackage = new OutPackage(newJson,listOfSocialObjects);
 

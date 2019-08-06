@@ -24,7 +24,7 @@ public class JsonToSocialObjectConverter {
 
         for (int i = 0; i < arrayOfSocialObjects.length(); i++) {
             SocialObject bufsocialObject = getSocialObject((JSONObject) arrayOfSocialObjects.get(i), requestMessage);
-                bufsocialObject.setInId(i);
+                bufsocialObject.setInId(Long.parseLong(String.valueOf(i)));
             SocialObjects.add(bufsocialObject);
         }
 
@@ -38,7 +38,7 @@ public class JsonToSocialObjectConverter {
 
             //JSONObject personData = (JSONObject) personJsonObject.get("information");
             // Получаем id, имя и фамилию
-            newSocialObject.setId( Integer.toString((Integer) personJsonObject.get("id"))  );
+            newSocialObject.setId( Long.parseLong( String.valueOf(personJsonObject.get("id"))) ); // Здесь косяк
             newSocialObject.setLastname((String) personJsonObject.get("last_name"));
             newSocialObject.setName((String) personJsonObject.get("first_name"));
 
@@ -103,13 +103,13 @@ public class JsonToSocialObjectConverter {
 
             newSocialObject.setPageLink("https://vk.com/id" + newSocialObject.getId().toString());
 
-            LinkedList<Integer> friendsArray = new LinkedList<>();
+
 
             JSONArray fiends = (JSONArray) personJsonObject.get("friends");
             if (fiends != null)
-                for (int i = 0; i < (int) fiends.length(); i++) {
-                    friendsArray.add((int) fiends.get(i));
-                    newSocialObject.addFriendsList(String.valueOf(fiends.get(i)));
+                for (int i = 0; i < fiends.length(); i++) {
+                    Long.parseLong( String.valueOf(personJsonObject.get("id")));
+                    newSocialObject.addFriendsList(Long.parseLong( String.valueOf(fiends.get(i))));
                 }
         } catch (NullPointerException ex) {
             ex.printStackTrace();

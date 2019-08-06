@@ -15,7 +15,6 @@
 
 .main {
     background: whitesmoke;
-    /*margin-left: 60px;*/
     position: center;
 }
 
@@ -60,11 +59,11 @@
 .node text {
     pointer-events: none;
     font: 10px sans-serif;
+    font-color: #263238;
 }
 
 .link {
-    fill: none;
-    stroke: #bbb;
+    stroke: #ccc;
 }
 
 

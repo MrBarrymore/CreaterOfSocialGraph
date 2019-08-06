@@ -29,7 +29,7 @@ public class SocialGraphBuilder {
         SocialGraph socialGraph = new SocialGraph();
 
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
-            socialGraph.addVertex(listOfSocialObjects.get(i).getInId(), listOfSocialObjects.get(i));
+            socialGraph.addVertex(listOfSocialObjects.get(i).getId(), listOfSocialObjects.get(i));
         }
 
         // Далее ищем когорты в полученном графе
@@ -40,12 +40,11 @@ public class SocialGraphBuilder {
 
     public static String JsonGraphBuilder(SocialGraph socialGraph) throws IOException {
 
-        String newJsonObjectsList = SocialObjectToJsonConverter.getJson(socialGraph.getAdjVertices());
+        String newJsonObjectsList = SocialObjectToJsonConverter.getNewJson(socialGraph.getAdjVertices());
 
 
        // ObjectMapper mapper = new ObjectMapper();
        // mapper.writeValue(new File(baseFile), newJsonObjectsList);
-
 
         try (FileWriter writer = new FileWriter(baseFile, false)){
             writer.write(newJsonObjectsList);
@@ -59,8 +58,6 @@ public class SocialGraphBuilder {
 
         return newJsonObjectsList;
     }
-
-
 
 
    private final static String baseFile = "src\\main\\resources\\static\\js\\graph.json";

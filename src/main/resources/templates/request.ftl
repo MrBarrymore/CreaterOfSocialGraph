@@ -33,17 +33,13 @@
 
             <div id="graph" class="container d-flex flex-column justify-content-center align-items-center">
                     <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>
-                       <h5 class="display-5">Визуализация социального графа</h5>
-
+                    <h5 class="display-5">Визуализация социального графа</h5>
 
                     <div id="graphDiv" class="container">
                         <svg width="960" height="600"></svg>
-
-                        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>
-
                         <script src="//d3js.org/d3.v3.min.js"></script>
                         <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-                        <script src="/js/resultBuilder.js"></script>
+                        <script src="/js/resultBuilder1.js"></script>
                     </div>
 
                     <#--<script src="//d3js.org/d3.v3.min.js"></script>-->
