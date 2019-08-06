@@ -47,7 +47,7 @@ public class SocialGraph {
 
         for (int i = 0 ; i < adjVertices.get(id).getFriendsList().size(); i++) {
             Long idBuf = adjVertices.get(id).getFriendsList().get(i);
-            adjVertices.get(id).getFriendsList().remove(idBuf);
+            adjVertices.get(idBuf).getFriendsList().remove(id);
         }
 
         adjVertices.remove(id);

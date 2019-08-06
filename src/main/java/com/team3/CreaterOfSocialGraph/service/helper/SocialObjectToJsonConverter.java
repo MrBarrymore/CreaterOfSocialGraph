@@ -30,7 +30,9 @@ public class SocialObjectToJsonConverter {
 
         for (Long key : listOfSocialObjects.keySet()) {
             for (int i = 0; i < listOfSocialObjects.get(key).getFriendsList().size(); i++) {
-                jsonDTO.addLink(new LinkDTO( listOfSocialObjects.get(key).getInId(), listOfSocialObjects.get(listOfSocialObjects.get(key).getFriendsList().get(i)).getInId(), 5, 1));
+                if (listOfSocialObjects.containsKey(key) && listOfSocialObjects.containsKey(listOfSocialObjects.get(key).getFriendsList().get(i)))
+                    jsonDTO.addLink(new LinkDTO( listOfSocialObjects.get(key).getInId(),
+                            listOfSocialObjects.get(listOfSocialObjects.get(key).getFriendsList().get(i)).getInId(), 5, 1));
             }
         }
 

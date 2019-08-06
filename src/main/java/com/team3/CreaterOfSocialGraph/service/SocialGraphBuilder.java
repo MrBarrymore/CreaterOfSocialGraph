@@ -11,11 +11,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import static com.team3.CreaterOfSocialGraph.service.DataGetter.getDataFromServer;
 
 @Component
 public class SocialGraphBuilder {
+
+    private final static String baseFile = "src\\main\\resources\\static\\js\\graph.json";
 
     public static List<SocialObject> getListOfSocialObjects(RequestMessage requestMessage) throws IOException, InterruptedException {
 
@@ -32,20 +35,31 @@ public class SocialGraphBuilder {
             socialGraph.addVertex(listOfSocialObjects.get(i).getId(), listOfSocialObjects.get(i));
         }
 
-        // Далее ищем когорты в полученном графе
-
         return socialGraph;
     }
 
 
+    public static SocialGraph rebuiltSocialGraph(SocialGraph socialGraph) {
+
+        SocialGraph newSocialGraph = new SocialGraph();
+
+        Map<Long, SocialObject> socialObjectMap = socialGraph.getAdjVertices();
+
+        for (Long key : socialObjectMap.keySet()) {
+            if (socialObjectMap.get(key).getRating() > 60) {
+                newSocialGraph.addVertex(socialObjectMap.get(key).getId(), socialObjectMap.get(key));
+            }
+        }
+
+        // Реализовать удаление из списка друзей социальных объектов, не добавленных в новый граф.
+
+        return newSocialGraph;
+    }
+
     public static String JsonGraphBuilder(SocialGraph socialGraph) throws IOException {
 
         String newJsonObjectsList = SocialObjectToJsonConverter.getNewJson(socialGraph.getAdjVertices());
-
-
-       // ObjectMapper mapper = new ObjectMapper();
-       // mapper.writeValue(new File(baseFile), newJsonObjectsList);
-
+        // Запись нового Json файла
         try (FileWriter writer = new FileWriter(baseFile, false)){
             writer.write(newJsonObjectsList);
             writer.flush();
@@ -54,12 +68,7 @@ public class SocialGraphBuilder {
 
             System.out.println(ex.getMessage());
         }
-
-
         return newJsonObjectsList;
     }
-
-
-   private final static String baseFile = "src\\main\\resources\\static\\js\\graph.json";
 
 }

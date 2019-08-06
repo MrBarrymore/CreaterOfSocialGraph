@@ -19,8 +19,8 @@ import static com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectCo
 @Component
 public class DataGetter {
 
- //   private final static String FILE_NAME = "src\\main\\resources\\testfiles\\graph.json"; // Статический заданый источник для тестов
-  private final static String FILE_NAME = "JsonTest.json"; // Статический заданый источник для тестов
+  private final static String FILE_NAME = "src\\main\\resources\\testfiles\\graph.json"; // Статический заданый источник для тестов
+ //  private final static String FILE_NAME = "JsonTest.json"; // Статический заданый источник для тестов
 
     public static LinkedList<SocialObject> getDataFromServer(RequestMessage requestMessage) throws IOException, InterruptedException {
 

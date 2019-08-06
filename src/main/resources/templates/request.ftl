@@ -10,7 +10,7 @@
         <div class="row justify-content-md-center">
 
             <div id="requestForm" class="col-2">
-                <form action="javascript:testtest()">
+                <form action="javascript:buildGraph()">
                     <div>
                         <label for="inputAddress">Название атрибута</label>
                         <input type="text" name="name" id="nameInput" class="form-control" placeholder="Барнаул" />
@@ -39,12 +39,8 @@
                         <svg width="960" height="600"></svg>
                         <script src="//d3js.org/d3.v3.min.js"></script>
                         <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-                        <script src="/js/resultBuilder1.js"></script>
+                        <script src="/js/resultBuilder.js"></script>
                     </div>
-
-                    <#--<script src="//d3js.org/d3.v3.min.js"></script>-->
-                    <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-
                 </div>
 
                 <div id="objectsList" class="container d-flex flex-column justify-content-start align-items-center">
@@ -70,7 +66,5 @@
 
         </div>  <#-- /.row-->
     </main>
-
-
 
 </@c.page>
