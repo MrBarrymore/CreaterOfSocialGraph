@@ -1,8 +1,12 @@
 package com.team3.CreaterOfSocialGraph.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 @Component
+@Getter
+@Setter
 public class RequestMessage {
 
     private String name;

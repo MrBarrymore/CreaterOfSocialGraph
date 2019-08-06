@@ -19,9 +19,9 @@
                         <label for="inputState">Наименование атрибута</label>
                         <select name="attributeName" id="attributeNameInput" class="form-control">
                             <option selected>Выберете атрибут...</option>
-                            <option>Город</option>
-                            <option>Университет</option>
-                            <option>Школа</option>
+                            <option>city</option>
+                            <option>university</option>
+                            <option>school</option>
                         </select>
                     </div>
                     <input type="hidden" name="_csrf" value="" />
@@ -35,9 +35,14 @@
                     <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>
                        <h5 class="display-5">Визуализация социального графа</h5>
 
-                    <div>
-                        <svg width="960" height="500"></svg>
-                        <script src="https://d3js.org/d3.v4.min.js"></script>
+
+                    <div id="graphDiv" class="container">
+                        <svg width="960" height="600"></svg>
+
+                        <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>
+
+                        <script src="//d3js.org/d3.v3.min.js"></script>
+                        <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
                         <script src="/js/resultBuilder.js"></script>
                     </div>
 
@@ -52,9 +57,11 @@
                             <thead>
                             <tr>
                                 <th scope="col">id</th>
-                                <th scope="col">Фамилия</th>
-                                <th scope="col">Имя</th>
-                                <th scope="col">Группа</th>
+                                <th scope="col">Фамилия Имя</th>
+                                <th scope="col">Город</th>
+                                <th scope="col">Ссылка в ВК</th>
+                                <th scope="col">Количество связей</th>
+                                <th scope="col">Рейтинг (%)</th>
                             </tr>
                             </thead>
                             <tbody id ="listDiv">

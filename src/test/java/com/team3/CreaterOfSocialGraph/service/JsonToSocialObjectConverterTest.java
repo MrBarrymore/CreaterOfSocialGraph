@@ -1,5 +1,6 @@
 package com.team3.CreaterOfSocialGraph.service;
 
+import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.service.helper.JsonToSocialObjectConverter;
 import org.json.JSONArray;
 import org.junit.Before;
@@ -27,7 +28,8 @@ public class JsonToSocialObjectConverterTest {
     @Test
     public void covvertJsonToSocialObject() throws Exception{
         String resultJson = parseUrl(FILE_NAME);
+        RequestMessage requestMessage = new RequestMessage("universaty", "АлтГТУ им. И.И. Ползунова");
         JSONArray listOfSocialObjectsJSON = new JSONArray(resultJson);
-        JsonToSocialObjectConverter.CovvertJsonToSocialObjects(listOfSocialObjectsJSON);
+        JsonToSocialObjectConverter.CovvertJsonToSocialObjects(listOfSocialObjectsJSON, requestMessage);
     }
 }

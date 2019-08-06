@@ -33,7 +33,7 @@ public class SocialObjectToJsonConverter {
         String newjson = "{ \"nodes\": [ ";
         for (int i = 0; i < listOfSocialObjects.size(); i++) {
 
-            newjson += "{ \"id\": \"" + listOfSocialObjects.get(i).getId() + "\", " +
+            newjson += "{ \"id\": \"" + listOfSocialObjects.get(i).getId() + "\", \"photo\": 1, " +
                     " \"group\": 1}";
 
             if (i != listOfSocialObjects.size() - 1) newjson += ", ";
@@ -45,8 +45,8 @@ public class SocialObjectToJsonConverter {
             for (int j = 0; j < listOfSocialObjects.get(i).getFriendsList().size(); j++) {
 
                 newjson += "{ \"source\": \"" + listOfSocialObjects.get(i).getId() + "\", \"target\": \"" +
-                        listOfSocialObjects.get(i).getFriendsList().get(j) + "\", ";
-                newjson += "\"value\": 5 }";
+                          listOfSocialObjects.get(i).getFriendsList().get(j) + "\", ";
+                newjson += "\"value\": 5, \"weight\": 1 }";
 
                 if (i != listOfSocialObjects.size() - 1 || j != listOfSocialObjects.get(i).getFriendsList().size() - 1 ) newjson += ",";
 

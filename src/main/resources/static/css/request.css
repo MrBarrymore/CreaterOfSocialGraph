@@ -46,6 +46,11 @@
     position: center;
 }
 
+#graphDiv {
+    height: 600px;
+    width: 960px;
+}
+
 /*Для социального графа*/
 .node {
     stroke: #fff;
@@ -61,4 +66,5 @@
     fill: none;
     stroke: #bbb;
 }
+
 

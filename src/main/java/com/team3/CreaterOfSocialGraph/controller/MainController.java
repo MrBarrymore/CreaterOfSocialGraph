@@ -1,9 +1,11 @@
 package com.team3.CreaterOfSocialGraph.controller;
 
 
+import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.OutPackage;
 import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
+import com.team3.CreaterOfSocialGraph.service.CohortCounter;
 import com.team3.CreaterOfSocialGraph.service.SocialGraphBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,12 +68,9 @@ public class MainController {
             @RequestParam String attributeName) throws IOException, InterruptedException {
 
         RequestMessage requestMessage = new RequestMessage(attributeName, name);
-//
 
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
-
         String newJson = SocialGraphBuilder.JsonGraphBuilder(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
-//        model.addAttribute("listOfSocialObjects", listOfSocialObjects);
 
         return newJson;
     }
@@ -85,7 +84,13 @@ public class MainController {
         RequestMessage requestMessage = new RequestMessage(attributeName, name);
 
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
-        String newJson = SocialGraphBuilder.JsonGraphBuilder(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
+
+        CohortCounter cohortCounter = new CohortCounter();
+
+        SocialGraph socialGraph = cohortCounter.getSocialObjectListWithRating(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
+
+ //       String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraph);
+        String newJson = " ";
 
         OutPackage outPackage = new OutPackage(newJson,listOfSocialObjects);
 
