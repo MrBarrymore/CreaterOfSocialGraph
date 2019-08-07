@@ -46,10 +46,11 @@ public class SocialGraph {
     public void removeVertex(Long id) {
 
         for (int i = 0 ; i < adjVertices.get(id).getFriendsList().size(); i++) {
-            Long idBuf = adjVertices.get(id).getFriendsList().get(i);
-            adjVertices.get(idBuf).getFriendsList().remove(id);
+            if (adjVertices.containsKey(adjVertices.get(id).getFriendsList().get(i))) {
+                Long idBuf = adjVertices.get(id).getFriendsList().get(i);
+                adjVertices.get(idBuf).getFriendsList().remove(id);
+            }
         }
-
         adjVertices.remove(id);
     }
 

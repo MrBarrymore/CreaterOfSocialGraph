@@ -32,7 +32,7 @@ function buildGraph() {
 
 
             const json = JSON.parse(response.jsonSocialGraph);
-           // console.log(json);
+            console.log(json);
 
 
             // "Uncaught TypeError: Cannot read property 'weight' of undefined"
@@ -72,7 +72,7 @@ function buildGraph() {
                     .enter().append("g")
                     .attr("class", "node")
                     .attr("r", 5)
-                    .attr("fill", "#3131b0")
+                    // .attr("fill", "#232db0")
                     .call(force.drag);
 
                 node.append("image")

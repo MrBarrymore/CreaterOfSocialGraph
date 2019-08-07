@@ -89,14 +89,15 @@ public class MainController {
         CohortCounter cohortCounter = new CohortCounter();
         SocialGraph socialGraph = cohortCounter.getSocialObjectListWithRating(SocialGraphBuilder.graphBuilder(listOfSocialObjects), requestMessage);
 
-        SocialGraph socialGraphWithRating = SocialGraphBuilder.rebuiltSocialGraph(socialGraph);
-
         listOfSocialObjects = cohortCounter.getList(socialGraph);
+
+
+        SocialGraph socialGraphWithRating = SocialGraphBuilder.rebuiltSocialGraph(socialGraph);
 
         //String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraph);
         String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraphWithRating);
 
-        OutPackage outPackage = new OutPackage(newJson,listOfSocialObjects);
+        OutPackage outPackage = new OutPackage(newJson, listOfSocialObjects);
 
         return outPackage;
     }

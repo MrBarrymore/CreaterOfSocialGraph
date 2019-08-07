@@ -39,7 +39,7 @@
                         <svg width="960" height="600"></svg>
                         <script src="//d3js.org/d3.v3.min.js"></script>
                         <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-                        <script src="/js/resultBuilder.js"></script>
+                        <script src="/js/resultBuilder1.js"></script>
                     </div>
                 </div>
 

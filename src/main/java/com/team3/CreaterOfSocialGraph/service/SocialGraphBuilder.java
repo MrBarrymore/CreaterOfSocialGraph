@@ -45,13 +45,14 @@ public class SocialGraphBuilder {
 
         Map<Long, SocialObject> socialObjectMap = socialGraph.getAdjVertices();
 
+        Long count = 0L;
         for (Long key : socialObjectMap.keySet()) {
-            if (socialObjectMap.get(key).getRating() > 60) {
+            if (socialObjectMap.get(key).getRating() > 85) {
                 newSocialGraph.addVertex(socialObjectMap.get(key).getId(), socialObjectMap.get(key));
+                newSocialGraph.getAdjVertices().get(key).setInId(count);
+                count++;
             }
         }
-
-        // Реализовать удаление из списка друзей социальных объектов, не добавленных в новый граф.
 
         return newSocialGraph;
     }

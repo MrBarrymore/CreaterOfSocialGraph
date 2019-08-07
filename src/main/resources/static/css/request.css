@@ -8,12 +8,7 @@
     position: center;
 }
 
-.body {
-    background: whitesmoke;
-    position: center;
-}
-
-.main {
+.body, .main {
     background: whitesmoke;
     position: center;
 }
@@ -21,7 +16,6 @@
 #maindiv, #graph, #objectsList {
     background: white;
     position: center;
-    /*margin-left: 60px;*/
 }
 
 #requestForm {
@@ -52,18 +46,17 @@
 
 /*Для социального графа*/
 .node {
-    stroke: #fff;
+    /*stroke: #fff;*/
     stroke-width: 1.5px;
+}
+
+.link {
+    stroke: #ccc;
 }
 
 .node text {
     pointer-events: none;
     font: 10px sans-serif;
-    font-color: #263238;
-}
-
-.link {
-    stroke: #ccc;
 }
 
 
