@@ -1,4 +1,7 @@
 
+
+
+
 function buildGraph() {
     const name = document.getElementById('nameInput').value;
     const attributeName = document.getElementById('attributeNameInput').value;

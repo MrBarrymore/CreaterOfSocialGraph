@@ -7,6 +7,7 @@ import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import com.team3.CreaterOfSocialGraph.service.CohortCounter;
 import com.team3.CreaterOfSocialGraph.service.SocialGraphBuilder;
+import com.vk.api.sdk.exceptions.ClientException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,7 +47,7 @@ public class MainController {
     public @ResponseBody
     List getListOfSocialObjects(
             @RequestParam String name,
-            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException {
+            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
 
         RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
 //
@@ -65,7 +66,7 @@ public class MainController {
     public @ResponseBody
     String getSocialGraph(
             @RequestParam String name,
-            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException {
+            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
 
         RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
 
@@ -79,7 +80,7 @@ public class MainController {
     public @ResponseBody
     OutPackage getSocialGraphAndList(
             @RequestParam String name,
-            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException {
+            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
 
         RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
 

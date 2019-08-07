@@ -43,7 +43,7 @@ public class JsonToSocialObjectConverter {
             newSocialObject.setRating(0);
 
             // Получаем название города
-            if( personJsonObject.has("city") ) {
+            if( personJsonObject.has("city") && personJsonObject.get("city") != JSONObject.NULL ) {
                 JSONObject cityData = (JSONObject) personJsonObject.get("city");
                 if (cityData != null) {
                     newSocialObject.setCity((String) cityData.get("title"));
@@ -60,7 +60,8 @@ public class JsonToSocialObjectConverter {
             }
 
             // Получаем название университета
-            if( personJsonObject.has("universities") ){
+            if( personJsonObject.has("universities") && personJsonObject.get("universities") != JSONObject.NULL){
+
                 JSONArray universityData = (JSONArray) personJsonObject.get("universities");
                 if (universityData.length() > 0) {
                     JSONObject firstUniversityData = (JSONObject) universityData.get(0);
@@ -77,8 +78,9 @@ public class JsonToSocialObjectConverter {
                 newSocialObject.setUniversity((String) "университет не указан");
             }
 
-            if( personJsonObject.has("schools") ) {
-                JSONArray schoolData = (JSONArray) personJsonObject.get("schools");
+            if( personJsonObject.has("schools") && personJsonObject.get("schools") != JSONObject.NULL ) {
+                JSONArray schoolData = new JSONArray();
+                if (personJsonObject.get("schools") != JSONObject.NULL) schoolData = (JSONArray) personJsonObject.get("schools");
                 if (schoolData.length() > 0) {
                     JSONObject firstSchoolData = (JSONObject) schoolData.get(0);
                     newSocialObject.setSchool((String) firstSchoolData.get("name"));

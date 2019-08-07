@@ -4,6 +4,7 @@ import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import com.team3.CreaterOfSocialGraph.service.SocialGraphBuilder;
+import com.vk.api.sdk.exceptions.ClientException;
 import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class SocialObjectToJsonConverterTest {
 
 
     @Test
-    public void getJson() throws JSONException, IOException, InterruptedException {
+    public void getJson() throws JSONException, IOException, InterruptedException, ClientException {
         RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ");
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
         SocialGraph socialGraph = SocialGraphBuilder.graphBuilder(listOfSocialObjects);
