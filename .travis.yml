@@ -4,7 +4,7 @@ before_install:
   - chmod +x mvnw
 
 script:
-  - mvn clean package
-
+#  - mvn clean package
+     mvn clean boot-jar
 after_success:
     - bash <(curl -s https://codecov.io/bash)

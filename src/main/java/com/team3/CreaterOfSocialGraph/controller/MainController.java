@@ -11,10 +11,7 @@ import com.team3.CreaterOfSocialGraph.service.SocialGraphBuilder;
 import com.vk.api.sdk.exceptions.ClientException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -23,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RestController
 //@RequiredArgsConstructor
 //@RequestMapping("request")
 public class MainController {
