@@ -1,6 +1,8 @@
 package com.team3.CreaterOfSocialGraph.service.helper;
 
 
+import org.json.JSONArray;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -38,6 +40,17 @@ public class IOHelper {
 
             System.out.println(ex.getMessage());
         }
+    }
 
+    public static void writeFile(String FILE_NAME, JSONArray listOfSocialObjectsJSON) {
+
+        try (FileWriter writer = new FileWriter(FILE_NAME, false)){
+            writer.write(listOfSocialObjectsJSON.toString());
+            writer.flush();
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
     }
 }

@@ -1,5 +1,8 @@
 
 function updateGraph() {
+    const information = $("#information");
+    $('label[id*=information]').text('');
+    information.append(`<b>Идет обновление графа</b>`);
     const name = document.getElementById('nameInput').value;
     const attributeName = document.getElementById('attributeNameInput').value;
     const ratingCount = document.getElementById('ratingCount').value;
@@ -88,5 +91,7 @@ function updateGraph() {
 
                 node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
             });
+            $('label[id*=information]').text('');
+            information.append(`<b>Запрос выполнен</b>`)
         });
 }

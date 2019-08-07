@@ -1,5 +1,8 @@
 
 function buildGraph() {
+    const information = $("#information");
+    $('label[id*=information]').text('');
+    information.append(`<b>Идет поиск кандидатов</b>`);
     const name = document.getElementById('nameInput').value;
     const attributeName = document.getElementById('attributeNameInput').value;
     const ratingCount = document.getElementById('ratingCount').value;
@@ -46,17 +49,6 @@ function buildGraph() {
                 }
             });
 
-        // var nodes = json.nodes,
-        //     nodeById = d3.map(nodes, function(d) { return d.id; }),
-        //     links = json.links,
-        //     bilinks = [];
-        //
-        //     links.forEach(function(link) {
-        //         var s = link.source = nodeById.get(link.source),
-        //             t = link.target = nodeById.get(link.target);
-        //         links.push({source: s, target: t});
-        //         bilinks.push([s, t]);
-        //     });
 
                 force
                     .nodes(json.nodes)
@@ -98,7 +90,11 @@ function buildGraph() {
 
                     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
                 });
+
+             $('label[id*=information]').text('');
+             information.append(`<b>Запрос выполнен</b>`)
         });
+
 }
 
 

@@ -4,7 +4,6 @@ package com.team3.CreaterOfSocialGraph.service;
 import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
-import com.team3.CreaterOfSocialGraph.service.helper.IOHelper;
 import com.team3.CreaterOfSocialGraph.service.helper.SocialObjectToJsonConverter;
 import com.vk.api.sdk.exceptions.ClientException;
 import org.springframework.stereotype.Component;
@@ -76,7 +75,7 @@ public class SocialGraphBuilder {
 
         String baseFile = "src\\main\\resources\\static\\js\\graph.json";
         // Запись обработанного графа в Json файл
-        IOHelper.writeFile(baseFile, newJsonObjectsList);
+      //  IOHelper.writeFile(baseFile, newJsonObjectsList);
 
         return newJsonObjectsList;
     }

@@ -39,6 +39,11 @@
                             <option>0</option>
                         </select>
                     </div>
+
+                    <div>
+                        <label id="information"><b></b></label>
+                    </div>
+
                     <input type="hidden" name="_csrf" value="" />
                     <button type="button" onclick="buildGraph()" class="btn btn-primary">Новый поиск</button>
                     <button type="button" onclick="updateGraph()" class="btn btn-primary">Обновить</button>
