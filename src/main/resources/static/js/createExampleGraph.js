@@ -1,4 +1,3 @@
-
 function createExampleGraph() {
     const information = $("#information");
     $('label[id*=information]').text('');
@@ -6,7 +5,7 @@ function createExampleGraph() {
     const name = document.getElementById('nameInput').value;
     const attributeName = document.getElementById('attributeNameInput').value;
     const ratingCount = document.getElementById('ratingCount').value;
-    $.post("/updateSocialGraphAndList", {name, attributeName, ratingCount}).done(
+    $.post("/createExampleGraph", {name, attributeName, ratingCount}).done(
         response => {
 
             //Выводим список вершин графа

@@ -25,6 +25,13 @@ public class SocialGraphBuilder {
         return listOfSocialObjects;
     }
 
+    public static List<SocialObject> getExampleListOfSocialObjects(RequestMessage requestMessage) throws IOException, InterruptedException, ClientException {
+
+        LinkedList<SocialObject> listOfSocialObjects =  DataGetter.getExampleData(requestMessage);
+
+        return listOfSocialObjects;
+    }
+
     public static List<SocialObject> rebuildListOfSocialObjects(List<SocialObject> listOfSocialObjects, RequestMessage requestMessage) throws IOException, InterruptedException, ClientException {
 
         List<SocialObject> newListOfSocialObjects = new LinkedList<>();
@@ -72,10 +79,6 @@ public class SocialGraphBuilder {
     public static String JsonGraphBuilder(SocialGraph socialGraph) throws IOException {
 
         String newJsonObjectsList = SocialObjectToJsonConverter.getNewJson(socialGraph.getAdjVertices());
-
-        String baseFile = "src\\main\\resources\\static\\js\\graph.json";
-        // Запись обработанного графа в Json файл
-      //  IOHelper.writeFile(baseFile, newJsonObjectsList);
 
         return newJsonObjectsList;
     }

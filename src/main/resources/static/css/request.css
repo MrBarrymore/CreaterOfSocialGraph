@@ -44,6 +44,11 @@
     width: 960px;
 }
 
+#messageContainer {
+    background-color: #263238;
+    color: whitesmoke;
+}
+
 .form {
     margin-top: 10px;
 }

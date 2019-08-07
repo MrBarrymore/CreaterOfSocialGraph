@@ -7,10 +7,8 @@ import lombok.Setter;
 
 import java.util.List;
 
-//@Component
 @Getter
 @Setter
-//@RequiredArgsConstructor
 public class DataStore {
 
     private List<SocialObject> listOfSocialObjects;

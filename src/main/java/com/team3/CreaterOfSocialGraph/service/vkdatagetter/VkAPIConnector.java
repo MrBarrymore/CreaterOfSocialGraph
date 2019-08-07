@@ -100,12 +100,12 @@ public class VkAPIConnector {
                 JSONObject uni_parse = new JSONObject(response.getContent());
                 JSONArray array = uni_parse.getJSONObject("response").getJSONArray("items");
 
-                System.out.println("Выберите нужный университет по ID:");
-
-                for (int i = 0; i < array.length(); i++) {
-                    System.out.println("ID " + array.getJSONObject(i).get("id") + "\t" + array.getJSONObject(i).get("title"));
-                }
+//                System.out.println("Выберите нужный университет по ID:");
+//                for (int i = 0; i < array.length(); i++) {
+//                    System.out.println("ID " + array.getJSONObject(i).get("id") + "\t" + array.getJSONObject(i).get("title"));
+//                }
                 //    int uni_id = in.nextInt();
+
                 code = "var result= API.users.search({\"university\":" + array.getJSONObject(0).get("id") + ",\"count\":" + number + "});\n" +
                         "return result.items@.id;";
                 search_resp = vk.execute().code(APP, code).executeAsRaw();
