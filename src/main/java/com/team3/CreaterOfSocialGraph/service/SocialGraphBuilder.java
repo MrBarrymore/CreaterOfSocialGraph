@@ -7,7 +7,6 @@ import com.team3.CreaterOfSocialGraph.domain.SocialObject;
 import com.team3.CreaterOfSocialGraph.service.helper.SocialObjectToJsonConverter;
 import org.springframework.stereotype.Component;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,15 +38,16 @@ public class SocialGraphBuilder {
     }
 
 
-    public static SocialGraph rebuiltSocialGraph(SocialGraph socialGraph) {
+    public static SocialGraph rebuiltSocialGraph(SocialGraph socialGraph, String Rating ) {
+
+        int needRating = Integer.valueOf(Rating);
 
         SocialGraph newSocialGraph = new SocialGraph();
-
         Map<Long, SocialObject> socialObjectMap = socialGraph.getAdjVertices();
 
         Long count = 0L;
         for (Long key : socialObjectMap.keySet()) {
-            if (socialObjectMap.get(key).getRating() > 85) {
+            if (socialObjectMap.get(key).getRating() >= needRating) {
                 newSocialGraph.addVertex(socialObjectMap.get(key).getId(), socialObjectMap.get(key));
                 newSocialGraph.getAdjVertices().get(key).setInId(count);
                 count++;
@@ -60,15 +60,17 @@ public class SocialGraphBuilder {
     public static String JsonGraphBuilder(SocialGraph socialGraph) throws IOException {
 
         String newJsonObjectsList = SocialObjectToJsonConverter.getNewJson(socialGraph.getAdjVertices());
-        // Запись нового Json файла
-        try (FileWriter writer = new FileWriter(baseFile, false)){
-            writer.write(newJsonObjectsList);
-            writer.flush();
-        }
-        catch(IOException ex){
 
-            System.out.println(ex.getMessage());
-        }
+//        // Запись нового Json файла
+//        try (FileWriter writer = new FileWriter(baseFile, false)){
+//            writer.write(newJsonObjectsList);
+//            writer.flush();
+//        }
+//        catch(IOException ex){
+//
+//            System.out.println(ex.getMessage());
+//        }
+
         return newJsonObjectsList;
     }
 

@@ -24,6 +24,15 @@
                             <option>school</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="inputState">Желаемый рейтинг > чем</label>
+                        <select name="ratingCount" id="ratingCount" class="form-control">
+                            <option selected>100</option>
+                            <option>75</option>
+                            <option>50</option>
+                            <option>25</option>
+                        </select>
+                    </div>
                     <input type="hidden" name="_csrf" value="" />
                     <button type="submit" class="btn btn-primary">Поиск</button>
                 </form>
@@ -39,7 +48,7 @@
                         <svg width="960" height="600"></svg>
                         <script src="//d3js.org/d3.v3.min.js"></script>
                         <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-                        <script src="/js/resultBuilder1.js"></script>
+                        <script src="/js/resultBuilder.js"></script>
                     </div>
                 </div>
 

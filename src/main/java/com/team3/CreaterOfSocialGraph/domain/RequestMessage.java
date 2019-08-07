@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
 @Setter
 public class RequestMessage {
 
-    private String name;
     private String attributeName;
+    private String name;
+    private String ratingCount;
 
     public RequestMessage() {
     }
@@ -18,5 +19,11 @@ public class RequestMessage {
     public RequestMessage(String attributeName, String name) {
         this.name = name;
         this.attributeName = attributeName;
+    }
+
+    public RequestMessage(String attributeName, String name, String ratingCount) {
+        this.attributeName = attributeName;
+        this.name = name;
+        this.ratingCount = ratingCount;
     }
 }

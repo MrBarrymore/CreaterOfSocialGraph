@@ -46,9 +46,9 @@ public class MainController {
     public @ResponseBody
     List getListOfSocialObjects(
             @RequestParam String name,
-            @RequestParam String attributeName) throws IOException, InterruptedException {
+            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException {
 
-        RequestMessage requestMessage = new RequestMessage(attributeName, name);
+        RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
 //
 //        ModelAndView modelAndView = new ModelAndView();
 //        modelAndView.setViewName("request");
@@ -65,9 +65,9 @@ public class MainController {
     public @ResponseBody
     String getSocialGraph(
             @RequestParam String name,
-            @RequestParam String attributeName) throws IOException, InterruptedException {
+            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException {
 
-        RequestMessage requestMessage = new RequestMessage(attributeName, name);
+        RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
 
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
         String newJson = SocialGraphBuilder.JsonGraphBuilder(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
@@ -79,9 +79,9 @@ public class MainController {
     public @ResponseBody
     OutPackage getSocialGraphAndList(
             @RequestParam String name,
-            @RequestParam String attributeName) throws IOException, InterruptedException {
+            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException {
 
-        RequestMessage requestMessage = new RequestMessage(attributeName, name);
+        RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
 
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
 
@@ -92,7 +92,7 @@ public class MainController {
         listOfSocialObjects = cohortCounter.getList(socialGraph);
 
 
-        SocialGraph socialGraphWithRating = SocialGraphBuilder.rebuiltSocialGraph(socialGraph);
+        SocialGraph socialGraphWithRating = SocialGraphBuilder.rebuiltSocialGraph(socialGraph, requestMessage.getRatingCount());
 
         //String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraph);
         String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraphWithRating);

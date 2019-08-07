@@ -14,12 +14,10 @@ import java.util.Objects;
 @Component
 public class JsonToSocialObjectConverter {
 
-
     public static LinkedList CovvertJsonToSocialObjects(JSONArray listOfSocialObjects, RequestMessage requestMessage)
             throws IOException {
 
         LinkedList SocialObjects = new LinkedList();
-
         JSONArray arrayOfSocialObjects = listOfSocialObjects;
 
         for (int i = 0; i < arrayOfSocialObjects.length(); i++) {
@@ -41,7 +39,6 @@ public class JsonToSocialObjectConverter {
             newSocialObject.setId( Long.parseLong( String.valueOf(personJsonObject.get("id"))) ); // Здесь косяк
             newSocialObject.setLastname((String) personJsonObject.get("last_name"));
             newSocialObject.setName((String) personJsonObject.get("first_name"));
-
 
             newSocialObject.setRating(0);
 
