@@ -44,6 +44,10 @@
     width: 960px;
 }
 
+.form {
+    margin-top: 10px;
+}
+
 /*Для социального графа*/
 .node {
     /*stroke: #fff;*/

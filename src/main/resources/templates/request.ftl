@@ -10,11 +10,16 @@
         <div class="row justify-content-md-center">
 
             <div id="requestForm" class="col-2">
-                <form action="javascript:buildGraph()">
+
+                <form>
                     <div>
-                        <label for="inputAddress">Название атрибута</label>
-                        <input type="text" name="name" id="nameInput" class="form-control" placeholder="Барнаул" />
+                        <label for="inputName">Название атрибута</label>
+                        <input type="text" name="name" id="nameInput" class="form-control"  placeholder="Например: Барнаул" />
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <label for="inputState">Наименование атрибута</label>
                         <select name="attributeName" id="attributeNameInput" class="form-control">
@@ -25,17 +30,20 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="inputState">Желаемый рейтинг > чем</label>
+                        <label for="inputState">Желаемый рейтинг >= чем</label>
                         <select name="ratingCount" id="ratingCount" class="form-control">
                             <option selected>100</option>
                             <option>75</option>
                             <option>50</option>
                             <option>25</option>
+                            <option>0</option>
                         </select>
                     </div>
                     <input type="hidden" name="_csrf" value="" />
-                    <button type="submit" class="btn btn-primary">Поиск</button>
+                    <button type="button" onclick="buildGraph()" class="btn btn-primary">Новый поиск</button>
+                    <button type="button" onclick="updateGraph()" class="btn btn-primary">Обновить</button>
                 </form>
+
             </div> <#-- /.col-3-->
 
             <div class="col-9"">
@@ -48,7 +56,9 @@
                         <svg width="960" height="600"></svg>
                         <script src="//d3js.org/d3.v3.min.js"></script>
                         <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-                        <script src="/js/resultBuilder.js"></script>
+                        <script src="/js/resultBuilder1.js"></script>
+
+                        <script src="/js/updateGraph.js"></script>
                     </div>
                 </div>
 

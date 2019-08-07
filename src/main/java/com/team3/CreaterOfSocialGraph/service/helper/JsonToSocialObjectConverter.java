@@ -34,7 +34,6 @@ public class JsonToSocialObjectConverter {
         SocialObject newSocialObject = new SocialObject();
         try {
 
-            //JSONObject personData = (JSONObject) personJsonObject.get("information");
             // Получаем id, имя и фамилию
             newSocialObject.setId( Long.parseLong( String.valueOf(personJsonObject.get("id"))) ); // Здесь косяк
             newSocialObject.setLastname((String) personJsonObject.get("last_name"));
@@ -101,8 +100,6 @@ public class JsonToSocialObjectConverter {
 
 
             newSocialObject.setPageLink("https://vk.com/id" + newSocialObject.getId().toString());
-
-
 
             JSONArray fiends = (JSONArray) personJsonObject.get("friends");
             if (fiends != null)

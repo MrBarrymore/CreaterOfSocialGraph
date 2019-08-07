@@ -4,6 +4,7 @@ package com.team3.CreaterOfSocialGraph.service;
 import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
 import com.team3.CreaterOfSocialGraph.domain.SocialObject;
+import com.team3.CreaterOfSocialGraph.service.helper.IOHelper;
 import com.team3.CreaterOfSocialGraph.service.helper.SocialObjectToJsonConverter;
 import com.vk.api.sdk.exceptions.ClientException;
 import org.springframework.stereotype.Component;
@@ -18,13 +19,24 @@ import static com.team3.CreaterOfSocialGraph.service.DataGetter.getDataFromServe
 @Component
 public class SocialGraphBuilder {
 
-    private final static String baseFile = "src\\main\\resources\\static\\js\\graph.json";
-
     public static List<SocialObject> getListOfSocialObjects(RequestMessage requestMessage) throws IOException, InterruptedException, ClientException {
 
         LinkedList<SocialObject> listOfSocialObjects = getDataFromServer(requestMessage);
 
         return listOfSocialObjects;
+    }
+
+    public static List<SocialObject> rebuildListOfSocialObjects(List<SocialObject> listOfSocialObjects, RequestMessage requestMessage) throws IOException, InterruptedException, ClientException {
+
+        List<SocialObject> newListOfSocialObjects = new LinkedList<>();
+
+        for (SocialObject socialObject : listOfSocialObjects) {
+            if (socialObject.getRating() > Integer.valueOf(requestMessage.getRatingCount())) {
+                newListOfSocialObjects.add(socialObject);
+            }
+        }
+
+        return newListOfSocialObjects;
     }
 
     public static SocialGraph graphBuilder(List<SocialObject> listOfSocialObjects) throws IOException, InterruptedException {
@@ -62,15 +74,9 @@ public class SocialGraphBuilder {
 
         String newJsonObjectsList = SocialObjectToJsonConverter.getNewJson(socialGraph.getAdjVertices());
 
-//        // Запись нового Json файла
-//        try (FileWriter writer = new FileWriter(baseFile, false)){
-//            writer.write(newJsonObjectsList);
-//            writer.flush();
-//        }
-//        catch(IOException ex){
-//
-//            System.out.println(ex.getMessage());
-//        }
+        String baseFile = "src\\main\\resources\\static\\js\\graph.json";
+        // Запись обработанного графа в Json файл
+        IOHelper.writeFile(baseFile, newJsonObjectsList);
 
         return newJsonObjectsList;
     }

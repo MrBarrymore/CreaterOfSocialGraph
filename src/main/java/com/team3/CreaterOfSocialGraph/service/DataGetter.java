@@ -27,10 +27,8 @@ public class DataGetter {
 
         // Работа через парсер
 //       JSONArray listOfSocialObjectsJSON = VkAPIConnector.getVkObjects(requestMessage);
-//
 //       // Записываем тестовый файл
 //        writeFile(listOfSocialObjectsJSON); // Запись полученной выборки в файл
-//
 //        LinkedList<SocialObject> listOfSocialObjects = CovvertJsonToSocialObjects(listOfSocialObjectsJSON, requestMessage);
 
 

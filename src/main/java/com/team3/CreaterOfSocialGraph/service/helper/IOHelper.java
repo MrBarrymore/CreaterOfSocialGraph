@@ -3,6 +3,7 @@ package com.team3.CreaterOfSocialGraph.service.helper;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class IOHelper {
@@ -24,5 +25,19 @@ public class IOHelper {
             e.printStackTrace();
         }
         return stringBuilder.toString();
+    }
+
+    public static void writeFile(String baseFile, String newJsonObjectsList) {
+
+        // Запись нового Json файла
+        try (FileWriter writer = new FileWriter(baseFile, false)){
+            writer.write(newJsonObjectsList);
+            writer.flush();
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+
     }
 }

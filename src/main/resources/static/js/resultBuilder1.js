@@ -1,7 +1,4 @@
 
-
-
-
 function buildGraph() {
     const name = document.getElementById('nameInput').value;
     const attributeName = document.getElementById('attributeNameInput').value;
@@ -23,14 +20,12 @@ function buildGraph() {
                                 </tr>`);
             });
 
-            // svg.selectAll("rect.negative").remove();
-
         // Визуализация социального графа
             var svg = d3.select("svg"),
             width = svg.attr("width"),
             height = svg.attr("height");
 
-            // svg.getContent().clear();
+            svg.selectAll("*").remove();
 
             var force = d3.layout.force()
                 .gravity(0.05)
@@ -38,10 +33,8 @@ function buildGraph() {
                 .charge(-100)
                 .size([width, height]);
 
-
             const json = JSON.parse(response.jsonSocialGraph);
             console.log(json);
-
 
             // "Uncaught TypeError: Cannot read property 'weight' of undefined"
             json.links.forEach(function(link, index, list) {

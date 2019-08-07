@@ -1,6 +1,7 @@
 package com.team3.CreaterOfSocialGraph.controller;
 
 
+import com.team3.CreaterOfSocialGraph.domain.DataStore;
 import com.team3.CreaterOfSocialGraph.domain.Graph.SocialGraph;
 import com.team3.CreaterOfSocialGraph.domain.OutPackage;
 import com.team3.CreaterOfSocialGraph.domain.RequestMessage;
@@ -26,6 +27,8 @@ import java.util.Map;
 //@RequestMapping("request")
 public class MainController {
 
+    private DataStore graphDataStore;
+
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
         return "greeting";
@@ -43,65 +46,60 @@ public class MainController {
         return modelAndView;
     }
 
-    @PostMapping("/getListOfSocialObjects")
-    public @ResponseBody
-    List getListOfSocialObjects(
-            @RequestParam String name,
-            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
-
-        RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("request");
-
-        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
-
-
- //       model.addAttribute("listOfSocialObjects", listOfSocialObjects);
-
-        return listOfSocialObjects;
-    }
-
-    @PostMapping("/getSocialGraph")
-    public @ResponseBody
-    String getSocialGraph(
-            @RequestParam String name,
-            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
-
-        RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
-
-        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
-        String newJson = SocialGraphBuilder.JsonGraphBuilder(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
-
-        return newJson;
-    }
-
     @PostMapping("/getSocialGraphAndList")
     public @ResponseBody
     OutPackage getSocialGraphAndList(
             @RequestParam String name,
             @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
 
+        // Формируем объект с данными запроса
         RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
-
+        // Получаем с сервера данные в форме социальных объектов
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
 
-
+        //Формируем когорты социального графа
         CohortCounter cohortCounter = new CohortCounter();
         SocialGraph socialGraph = cohortCounter.getSocialObjectListWithRating(SocialGraphBuilder.graphBuilder(listOfSocialObjects), requestMessage);
-
         listOfSocialObjects = cohortCounter.getList(socialGraph);
 
+        // Сохраняем обработанные данные в хранилище
+        graphDataStore = new DataStore(listOfSocialObjects, socialGraph);
 
+        // Перестраиваем граф исходя из необходимого значения рейтинга социального объекта
+        SocialGraph socialGraphWithRating = SocialGraphBuilder.rebuiltSocialGraph(socialGraph, requestMessage.getRatingCount());
+        listOfSocialObjects = cohortCounter.getList(socialGraphWithRating);
+
+        // Формируем пакет для отправки на интерфейс
+        String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraphWithRating);
+        OutPackage outPackage = new OutPackage(newJson, listOfSocialObjects);
+
+        return outPackage;
+    }
+
+
+    @PostMapping("/updateSocialGraphAndList")
+    public @ResponseBody
+    OutPackage updateSocialGraphAndList(
+            @RequestParam String name,
+            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
+
+        // Формируем объект с данными нового запроса
+        RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
+
+        // Получаем список социальных объектов и социальный граф из хранилища данных
+        List<SocialObject> listOfSocialObjects = graphDataStore.getListOfSocialObjects();
+        SocialGraph socialGraph = graphDataStore.getSocialGraph();
+
+        // Перестраиваем граф исходя из необходимого значения рейтинга социального объекта
         SocialGraph socialGraphWithRating = SocialGraphBuilder.rebuiltSocialGraph(socialGraph, requestMessage.getRatingCount());
 
-        //String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraph);
         String newJson = SocialGraphBuilder.JsonGraphBuilder(socialGraphWithRating);
 
         OutPackage outPackage = new OutPackage(newJson, listOfSocialObjects);
 
         return outPackage;
     }
+
 
     @GetMapping("/aboutApplication")
     public String aboutApplication(Map<String, Object> model) {
