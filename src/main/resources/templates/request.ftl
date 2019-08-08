@@ -46,7 +46,7 @@
 
                 <input type="hidden" name="_csrf" value="" />
                 <button type="button" onclick="buildGraph()" class="btn btn-primary">Новый поиск</button>
-                <button type="button" onclick="updateGraph()" class="btn btn-primary">Обновить</button>
+                <button type="button" onclick="updateGraph1()" class="btn btn-primary">Обновить</button>
             </form>
 
         </div> <#-- /.col-3-->
@@ -63,7 +63,7 @@
                 <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
                 <script src="/js/resultBuilder.js"></script>
 
-                <script src="/js/updateGraph.js"></script>
+                <script src="/js/updateGraph1.js"></script>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
                     <th scope="col">Фамилия Имя</th>
                     <th scope="col">Город</th>
                     <th scope="col">Ссылка в ВК</th>
-                    <th scope="col">Количество связей</th>
+                    <th scope="col">Количество друзей</th>
                     <th scope="col">Рейтинг (%)</th>
                 </tr>
                 </thead>

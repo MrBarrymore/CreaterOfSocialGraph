@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -82,9 +83,14 @@ public class MainController {
         // Формируем объект с данными нового запроса
         RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
 
-        // Получаем список социальных объектов и социальный граф из хранилища данных
-        List<SocialObject> listOfSocialObjects = graphDataStore.getListOfSocialObjects();
-        SocialGraph socialGraph = graphDataStore.getSocialGraph();
+        List<SocialObject> listOfSocialObjects = new LinkedList<>();
+        SocialGraph socialGraph = new SocialGraph();
+
+        if (graphDataStore != null) {
+            // Получаем список социальных объектов и социальный граф из хранилища данных
+            listOfSocialObjects = graphDataStore.getListOfSocialObjects();
+            socialGraph = graphDataStore.getSocialGraph();
+        }
 
         // Перестраиваем граф исходя из необходимого значения рейтинга социального объекта
         SocialGraph socialGraphWithRating = SocialGraphBuilder.rebuiltSocialGraph(socialGraph, requestMessage.getRatingCount());

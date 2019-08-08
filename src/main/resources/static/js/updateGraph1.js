@@ -1,5 +1,5 @@
 
-function createExampleGraph() {
+function updateGraph1() {
     const information = $("#information");
     $('label[id*=information]').text('');
     information.append(`<b>Идет обновление графа</b>`);

@@ -86,7 +86,7 @@
                     <th scope="col">Фамилия Имя</th>
                     <th scope="col">Город</th>
                     <th scope="col">Ссылка в ВК</th>
-                    <th scope="col">Количество связей</th>
+                    <th scope="col">Количество друзей</th>
                     <th scope="col">Рейтинг (%)</th>
                 </tr>
                 </thead>
