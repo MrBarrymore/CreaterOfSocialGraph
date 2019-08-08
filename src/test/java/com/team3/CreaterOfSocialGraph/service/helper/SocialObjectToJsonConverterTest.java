@@ -22,8 +22,8 @@ public class SocialObjectToJsonConverterTest {
 
     @Test
     public void getJson() throws JSONException, IOException, InterruptedException, ClientException {
-        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ");
-        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
+        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ", 20, "100");
+        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getExampleListOfSocialObjects(requestMessage);
         SocialGraph socialGraph = SocialGraphBuilder.graphBuilder(listOfSocialObjects);
         SocialGraphBuilder.JsonGraphBuilder(socialGraph);
     }

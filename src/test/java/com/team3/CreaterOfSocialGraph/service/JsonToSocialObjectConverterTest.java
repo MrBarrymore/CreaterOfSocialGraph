@@ -28,7 +28,7 @@ public class JsonToSocialObjectConverterTest {
     @Test
     public void covvertJsonToSocialObject() throws Exception{
         String resultJson = parseUrl(FILE_NAME);
-        RequestMessage requestMessage = new RequestMessage("universaty", "АлтГТУ им. И.И. Ползунова");
+        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ им. Ползунова", 20, "100");
         JSONArray listOfSocialObjectsJSON = new JSONArray(resultJson);
         JsonToSocialObjectConverter.CovvertJsonToSocialObjects(listOfSocialObjectsJSON, requestMessage);
     }

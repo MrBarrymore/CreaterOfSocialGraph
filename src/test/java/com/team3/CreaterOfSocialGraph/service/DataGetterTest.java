@@ -16,7 +16,13 @@ public class DataGetterTest {
 
     @Test
     public void getDataFromServer() throws IOException, InterruptedException, ClientException {
-        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ");
+        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ", 20, "100");
         DataGetter.getDataFromServer(requestMessage);
+    }
+
+    @Test
+    public void getDataFile() throws IOException, InterruptedException, ClientException {
+        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ", 20, "100");
+        DataGetter.getExampleData(requestMessage);
     }
 }

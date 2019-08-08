@@ -18,15 +18,15 @@ public class SocialGraphBuilderTest {
 
     @Test
     public void graphBuilder() throws IOException, InterruptedException, ClientException {
-        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ");
-        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
+        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ", 20, "100");
+        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getExampleListOfSocialObjects(requestMessage);
         SocialGraphBuilder.graphBuilder(listOfSocialObjects);
     }
 
     @Test
     public void JsonGraphBuilder() throws IOException, InterruptedException, ClientException {
-        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ");
-        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
+        RequestMessage requestMessage = new RequestMessage("university", "АлтГТУ", 20, "100");
+        List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getExampleListOfSocialObjects(requestMessage);
         SocialGraphBuilder.JsonGraphBuilder(SocialGraphBuilder.graphBuilder(listOfSocialObjects));
     }
 }
