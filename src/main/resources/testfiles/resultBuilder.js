@@ -5,8 +5,10 @@ function buildGraph() {
     information.append(`<b>Идет поиск кандидатов</b>`);
     const name = document.getElementById('nameInput').value;
     const attributeName = document.getElementById('attributeNameInput').value;
+    const objectsCount  = document.getElementById('objectsCount').value;
     const ratingCount = document.getElementById('ratingCount').value;
-    $.post("/getSocialGraphAndList", {name, attributeName, ratingCount}).done(
+
+    $.post("/getSocialGraphAndList", {name, attributeName, objectsCount, ratingCount}).done(
         response => {
 
             //Выводим список вершин графа

@@ -11,6 +11,7 @@ public class RequestMessage {
 
     private String attributeName;
     private String name;
+    private Integer objectsCount;
     private String ratingCount;
 
     public RequestMessage() {
@@ -24,6 +25,13 @@ public class RequestMessage {
     public RequestMessage(String attributeName, String name, String ratingCount) {
         this.attributeName = attributeName;
         this.name = name;
+        this.ratingCount = ratingCount;
+    }
+
+    public RequestMessage(String attributeName, String name, Integer objectsCount, String ratingCount) {
+        this.attributeName = attributeName;
+        this.name = name;
+        this.objectsCount = objectsCount;
         this.ratingCount = ratingCount;
     }
 }

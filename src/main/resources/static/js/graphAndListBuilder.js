@@ -1,12 +1,14 @@
 
-function updateGraph1() {
+function buildGraph() {
     const information = $("#information");
     $('label[id*=information]').text('');
-    information.append(`<b>Идет обновление графа</b>`);
+    information.append(`<b>Идет поиск кандидатов</b>`);
     const name = document.getElementById('nameInput').value;
     const attributeName = document.getElementById('attributeNameInput').value;
+    const objectsCount  = document.getElementById('objectsCount').value;
     const ratingCount = document.getElementById('ratingCount').value;
-    $.post("/updateSocialGraphAndList", {name, attributeName, ratingCount}).done(
+
+    $.post("/getSocialGraphAndList", {name, attributeName, objectsCount, ratingCount}).done(
         response => {
 
             //Выводим список вершин графа
@@ -23,7 +25,6 @@ function updateGraph1() {
                                 </tr>`);
             });
 
-
             // Визуализация социального графа
             var svg = d3.select("svg"),
                 width = svg.attr("width"),
@@ -37,7 +38,6 @@ function updateGraph1() {
                 .charge(-100)
                 .size([width, height]);
 
-
             const json = JSON.parse(response.jsonSocialGraph);
             console.log(json);
 
@@ -50,6 +50,7 @@ function updateGraph1() {
                     console.log('undefined target', link);
                 }
             });
+
 
             force
                 .nodes(json.nodes)
@@ -91,7 +92,13 @@ function updateGraph1() {
 
                 node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
             });
+
             $('label[id*=information]').text('');
             information.append(`<b>Запрос выполнен</b>`)
         });
+
 }
+
+
+
+

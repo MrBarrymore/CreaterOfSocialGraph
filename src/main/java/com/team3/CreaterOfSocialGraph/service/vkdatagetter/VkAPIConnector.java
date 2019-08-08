@@ -163,7 +163,6 @@ public class VkAPIConnector {
                 JSONArray array = uni_parse.getJSONObject("response").getJSONArray("items");
 
 //                System.out.println("Выберите нужный университет по ID:");
-//
 //                for (int i=0;i<array.length();i++) {
 //                    System.out.println("ID " + array.getJSONObject(i).get("id") + "\t" +array.getJSONObject(i).get("title"));
 //                }
@@ -209,10 +208,9 @@ public class VkAPIConnector {
         JSONArray result = new JSONArray();
 
         //Входные данные
-        //Входные данные
         String param = requestMessage.getAttributeName();
         String value = requestMessage.getName();
-        int number = 20;
+        int number = requestMessage.getObjectsCount();
 
         // Количество людей из поиска (максимум 1000)
 

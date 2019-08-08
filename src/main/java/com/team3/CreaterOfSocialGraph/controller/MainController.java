@@ -48,10 +48,12 @@ public class MainController {
     public @ResponseBody
     OutPackage getSocialGraphAndList(
             @RequestParam String name,
-            @RequestParam String attributeName, String ratingCount) throws IOException, InterruptedException, ClientException {
+            @RequestParam String attributeName,
+            String objectsCount,
+            String ratingCount) throws IOException, InterruptedException, ClientException {
 
         // Формируем объект с данными запроса
-        RequestMessage requestMessage = new RequestMessage(attributeName, name, ratingCount);
+        RequestMessage requestMessage = new RequestMessage(attributeName, name, Integer.valueOf(objectsCount), ratingCount);
         // Получаем с сервера данные в форме социальных объектов
         List<SocialObject> listOfSocialObjects = SocialGraphBuilder.getListOfSocialObjects(requestMessage);
 

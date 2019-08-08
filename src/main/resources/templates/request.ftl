@@ -12,14 +12,6 @@
         <div id="requestForm" class="col-2">
 
             <form>
-                <div>
-                    <label for="inputName">Название атрибута</label>
-                    <input type="text" name="name" id="nameInput" class="form-control"  placeholder="Например: Барнаул" />
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <label for="inputState">Наименование атрибута</label>
                     <select name="attributeName" id="attributeNameInput" class="form-control">
@@ -29,6 +21,19 @@
                         <option>school</option>
                     </select>
                 </div>
+                <div>
+                    <label for="inputName">Название атрибута</label>
+                    <input type="text" name="name" id="nameInput" class="form-control"  placeholder="Например: Барнаул" />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div>
+                    <label for="inputName">Количество людей в изначальной выборке</label>
+                    <input type="text" name="objectsCount" id="objectsCount" class="form-control"  placeholder="Например: 20" />
+                </div>
+
                 <div class="form-group">
                     <label for="inputState">Желаемый рейтинг >= чем</label>
                     <select name="ratingCount" id="ratingCount" class="form-control">
@@ -46,7 +51,7 @@
 
                 <input type="hidden" name="_csrf" value="" />
                 <button type="button" onclick="buildGraph()" class="btn btn-primary">Новый поиск</button>
-                <button type="button" onclick="updateGraph1()" class="btn btn-primary">Обновить</button>
+                <button type="button" onclick="updateGraph()" class="btn btn-primary">Обновить</button>
             </form>
 
         </div> <#-- /.col-3-->
@@ -54,16 +59,14 @@
         <div class="col-9"">
 
         <div id="graph" class="container d-flex flex-column justify-content-center align-items-center">
-            <#--<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script>-->
             <h5 class="display-5">Визуализация социального графа</h5>
 
             <div id="graphDiv" class="container">
                 <svg width="960" height="600"></svg>
                 <script src="//d3js.org/d3.v3.min.js"></script>
-                <#--<script src="https://d3js.org/d3.v4.min.js"></script>-->
-                <script src="/js/resultBuilder.js"></script>
 
-                <script src="/js/updateGraph1.js"></script>
+                <script src="/js/graphAndListBuilder.js"></script>
+                <script src="/js/updateGraph.js"></script>
             </div>
         </div>
 
