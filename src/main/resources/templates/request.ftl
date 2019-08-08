@@ -51,7 +51,7 @@
 
                 <input type="hidden" name="_csrf" value="" />
                 <button type="button" onclick="buildGraph()" class="btn btn-primary">Новый поиск</button>
-                <button type="button" onclick="updateGraph()" class="btn btn-primary">Обновить</button>
+                <button type="button" onclick="updateGraph1()" class="btn btn-primary">Обновить</button>
             </form>
 
         </div> <#-- /.col-3-->
@@ -66,7 +66,7 @@
                 <script src="//d3js.org/d3.v3.min.js"></script>
 
                 <script src="/js/graphAndListBuilder.js"></script>
-                <script src="/js/updateGraph.js"></script>
+                <script src="/js/updateGraph111.js"></script>
             </div>
         </div>
 

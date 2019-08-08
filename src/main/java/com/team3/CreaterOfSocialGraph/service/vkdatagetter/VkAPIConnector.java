@@ -218,7 +218,7 @@ public class VkAPIConnector {
         int deep = 2;
 
         // ! ПРОБЛЕМЫ С РУССКОЙ КОДИРОВКОЙ !
-        Scanner in = new Scanner(System.in);
+//        Scanner in = new Scanner(System.in);
 
         // Первоначальный поиск
         JSONArray searching_people = search(number, param, value);

@@ -1,3 +1,4 @@
+
 function createExampleGraph() {
     const information = $("#information");
     $('label[id*=information]').text('');
