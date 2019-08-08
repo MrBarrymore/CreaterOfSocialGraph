@@ -66,7 +66,7 @@
                 <script src="//d3js.org/d3.v3.min.js"></script>
 
                 <script src="/js/graphAndListBuilder.js"></script>
-                <script src="/js/updateGraph111.js"></script>
+                <script src="/js/updateGraph.js"></script>
             </div>
         </div>
 
