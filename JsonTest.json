@@ -1,0 +1,22 @@
+
+[
+
+{'id': 176001013, 'first_name': 'Ярик', 'last_name': 'Морозов', 'is_closed': False, 'can_access_closed': True, 'sex': 2, 'city': {'id': 314, 'title': 'Kiev'}, 'country': {'id': 2, 'title': 'Ukraine'}, 'photo_50': 'https://sun1-19.userapi.com/c853628/v853628303/fef6/BnYQzT08zUs.jpg?ava=1', 'last_seen': {'time': 1563717516, 'platform': 2}, 'universities': [{'id': 6067, 'country': 2, 'city': 314, 'name': 'APGU', 'faculty': 315326, 'faculty_name': 'Menegment faculty', 'chair': 277006, 'chair_name': 'chair_name', 'graduation': 2016, 'education_form': 'education_form'}], 'schools': [{'id': '184652', 'country': 2, 'city': 1158, 'name': 'School 1', 'year_graduated': 2010, 'class': 'B'}],
+friends: [276001013, 376001013, 476001013, 576001013, 676001013]},
+
+{'id': 276001013, 'first_name': 'Петя', 'last_name': 'Хаустов', 'is_closed': False, 'can_access_closed': True, 'sex': 2, 'city': {'id': 314, 'title': 'Kiev'}, 'country': {'id': 2, 'title': 'Ukraine'}, 'photo_50': 'https://sun1-19.userapi.com/c853628/v853628303/fef6/BnYQzT08zUs.jpg?ava=1', 'last_seen': {'time': 1563717516, 'platform': 2}, 'universities': [{'id': 6067, 'country': 2, 'city': 314, 'name': 'APGU', 'faculty': 315326, 'faculty_name': 'Menegment faculty', 'chair': 277006, 'chair_name': 'chair_name', 'graduation': 2016, 'education_form': 'education_form'}], 'schools': [{'id': '184652', 'country': 2, 'city': 1158, 'name': 'School 1', 'year_graduated': 2010, 'class': 'B'}],
+friends: [176001013, 376001013, 476001013, 576001013, 676001013]},
+
+{'id': 376001013, 'first_name': 'Васька', 'last_name': 'Смалько', 'is_closed': False, 'can_access_closed': True, 'sex': 2, 'city': {'id': 314, 'title': 'Kiev'}, 'country': {'id': 2, 'title': 'Ukraine'}, 'photo_50': 'https://sun1-19.userapi.com/c853628/v853628303/fef6/BnYQzT08zUs.jpg?ava=1', 'last_seen': {'time': 1563717516, 'platform': 2}, 'universities': [{'id': 6067, 'country': 2, 'city': 314, 'name': 'APGU', 'faculty': 315326, 'faculty_name': 'Menegment faculty', 'chair': 277006, 'chair_name': 'chair_name', 'graduation': 2016, 'education_form': 'education_form'}], 'schools': [{'id': '184652', 'country': 2, 'city': 1158, 'name': 'School 1', 'year_graduated': 2010, 'class': 'B'}],
+friends: [176001013, 276001013, 476001013, 576001013, 676001013]},
+
+{'id': 476001013, 'first_name': 'Никита', 'last_name': 'Мулаков', 'is_closed': False, 'can_access_closed': True, 'sex': 2, 'city': {'id': 314, 'title': 'Kiev'}, 'country': {'id': 2, 'title': 'Ukraine'}, 'photo_50': 'https://sun1-19.userapi.com/c853628/v853628303/fef6/BnYQzT08zUs.jpg?ava=1', 'last_seen': {'time': 1563717516, 'platform': 2}, 'universities': [{'id': 6067, 'country': 2, 'city': 314, 'name': 'APGU', 'faculty': 315326, 'faculty_name': 'Menegment faculty', 'chair': 277006, 'chair_name': 'chair_name', 'graduation': 2016, 'education_form': 'education_form'}], 'schools': [{'id': '184652', 'country': 2, 'city': 1158, 'name': 'School 1', 'year_graduated': 2010, 'class': 'B'}],
+friends: [176001013, 276001013, 376001013, 576001013, 676001013]},
+
+{'id': 576001013, 'first_name': 'Алина', 'last_name': 'Ларина', 'is_closed': False, 'can_access_closed': True, 'sex': 2, 'city': {'id': 314, 'title': 'Kiev'}, 'country': {'id': 2, 'title': 'Ukraine'}, 'photo_50': 'https://sun1-19.userapi.com/c853628/v853628303/fef6/BnYQzT08zUs.jpg?ava=1', 'last_seen': {'time': 1563717516, 'platform': 2}, 'universities': [{'id': 6067, 'country': 2, 'city': 314, 'name': 'APGU', 'faculty': 315326, 'faculty_name': 'Menegment faculty', 'chair': 277006, 'chair_name': 'chair_name', 'graduation': 2016, 'education_form': 'education_form'}], 'schools': [{'id': '184652', 'country': 2, 'city': 1158, 'name': 'School 1', 'year_graduated': 2010, 'class': 'B'}],
+friends: [176001013, 276001013, 376001013, 476001013, 676001013]},
+
+{'id': 676001013, 'first_name': 'Марина', 'last_name': 'Тарханова', 'is_closed': False, 'can_access_closed': True, 'sex': 2, 'city': {'id': 314, 'title': 'Kiev'}, 'country': {'id': 2, 'title': 'Ukraine'}, 'photo_50': 'https://sun1-19.userapi.com/c853628/v853628303/fef6/BnYQzT08zUs.jpg?ava=1', 'last_seen': {'time': 1563717516, 'platform': 2}, 'universities': [{'id': 6067, 'country': 2, 'city': 314, 'name': 'APGU', 'faculty': 315326, 'faculty_name': 'Menegment faculty', 'chair': 277006, 'chair_name': 'chair_name', 'graduation': 2016, 'education_form': 'education_form'}], 'schools': [{'id': '184652', 'country': 2, 'city': 1158, 'name': 'School 1', 'year_graduated': 2010, 'class': 'B'}],
+friends: [176001013, 276001013, 376001013, 476001013, 576001013]}
+
+]

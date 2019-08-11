@@ -1,25 +1,38 @@
 package com.team3.CreaterOfSocialGraph.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.List;
 
-@Data
+import java.util.LinkedList;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class SocialObject {
 
-    private long id;
-    private String surname;
+/*    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
+    private Long inId;
+    private Long id;
+    private String lastname;
     private String name;
     private String school;
     private String university;
     private String city;
-    private List<String> friendsList;
+    private String photoLink;
+    private String pageLink;
+    private LinkedList<Long> friendsList = new LinkedList<>();
+    private Integer rating;
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public void addFriendsList(Long id) {
+        friendsList.add(id);
+    }
 
 }
